@@ -1,0 +1,244 @@
+.product-manager {
+    padding-top: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.product-manager .filter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.searchform {
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 15px;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 4px;
+}
+input.search-form {
+    border: none;
+    background-color: transparent;
+    min-width: 150px;
+}
+.btn-additem {
+    border-radius: 4px;
+    border: 1px solid #3e7a83; 
+    background-color: #68dff0;
+    padding-left: 15px;
+    padding-top: 6px;
+    padding-bottom: 7px;
+    padding-right: 15px;
+    color: white;
+    margin-right: 5px;
+}
+.btn-deleteitem {
+    border-radius: 4px;
+    border: 1px solid #b82f0c; 
+    background-color: rgb(247, 70, 70);
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 15px;
+    color: white;
+}
+.btn-edititem {
+    border-radius: 4px;
+    border: 1px solid rgb(0, 92, 0);
+    background-color: rgb(153, 226, 44);
+    padding-left: 15px;
+    padding-top: 6px;
+    padding-bottom: 7px;
+    padding-right: 15px;
+    color: white;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.btn-additem:hover {
+    color: white;
+    background-color: #358796;
+}
+.btn-edititem:hover {
+    background-color: rgb(50, 192, 50);
+    color: white;
+}
+.btn-deleteitem:hover {
+    background-color: #ce5d5d;
+}
+.table-book {
+    margin-top: 30px;
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.table-book tr {
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+    padding-bottom: 15px !important;
+}
+.table-book table {
+    width: 100%;
+}
+th, td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.table-book input {
+    width: 15px;
+    height: 15px;
+}
+.table-book .pagi {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.pagi a {
+    padding: 5px 15px 5px 15px;
+    border: 1px solid;
+    border-radius: 2px;
+    margin-right: 5px;
+    font-size: 15px;
+    color: #797979;
+    text-align: center;
+}
+.pagi a:hover {
+    color: black;
+    border: 1px solid black;
+}
+
+.dialog {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity linear 0.2s;
+    visibility: hidden;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.dialog .dialog-body {
+    position: relative;
+    width: 800px;
+    height: 450px;
+    /* background-color: #f2f2f2; */
+    background-color: white;
+    border-radius: 4px;
+    background-image: url(../img/bg_img.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#dialog:target {
+    visibility: visible;
+}
+
+.dialog-body .infor{
+    width: 100%;
+    height: 300px;
+    border-bottom: 1px solid;
+    padding: 5px;
+    display: flex;
+}
+.infor .area-img{
+    width: 30%;
+    height: 100%;
+    align-items: center;
+    text-align-last: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: relative;
+}
+.area-img > img {
+    width: 100%;
+    max-height: 250px;
+    margin-bottom: 10px;
+}
+.area-img > input {
+    max-width: 100%;
+    position: absolute; 
+    bottom: 5px; 
+    left: 0px;
+}
+.area-basicinfor {
+    height: 100%;
+    width: 70%;
+    color: black;
+}
+.area-basicinfor > table {
+    width: 100%;
+    height: 100%;
+}
+.area-basicinfor > table > tr {
+    height: 25%;
+}
+.area-basicinfor > table > tr > td {
+    margin-right: 10px;
+}
+.text-infor {
+    border-radius: 4px;
+    border: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+}
+.area-basicinfor td {
+    display: inline-grid;
+    width: 40%;
+    margin-right: 10%;
+}
+
+.dialog-body .description {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 30px;
+    color: black;
+}
+.description .text-des {
+    margin-left: 30px;
+}
+.description textarea {
+    border-radius: 4px;
+    border: 1px solid black;
+}
+.dialog-action {
+    display: flex;
+    justify-content: end;
+    height: 50px;
+    margin-top: 10px;
+}
+.btn-canceldialog {
+    color: white;
+    padding: 5px 15px 5px 15px;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-right: 5px;
+    background-color: rgb(247, 70, 70);
+    border-radius: 4px;
+    height: 35px;
+}
+
+.btn-canceldialog:hover {
+    background-color: #b14e4e;
+    color: white;
+}
+.btn-savedialog {
+    color: white;
+    padding: 5px 15px 5px 15px;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-right: 5px;
+    background-color: rgb(76, 247, 70);
+    border-radius: 4px;
+    height: 35px;
+}
+.btn-savedialog:hover {
+    color: white;
+    background-color: rgb(57, 170, 53);
+}
