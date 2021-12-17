@@ -21,7 +21,7 @@
                 </a>
                 <a class="btn-edititem">
                     <i class="fas fa-edit"></i>
-                    Change
+                    Check or Change
                 </a>
                 <button class="btn-deleteitem">
                 <i class="fas fa-minus"></i>
@@ -35,83 +35,31 @@
         <table>
             <tr>
             <th></th>
-            <th>No</th>
             <th>Product Code</th>
             <th>Product Name</th>
             <th>Product Infor</th>
             <th>Price</th>
             <th>In stock</th>
             </tr>
+            
+            @foreach ($product as $item)
             <tr>
-            <td>
-                <input type="checkbox" checked="checked">
-            </td>
-            <td>1</td>
-            <td>B0001</td>
-            <td>Từ tốt đến vĩ đại</td>
-            <td>Nhà xuất bản: NXB Trẻ
-                <br>Tác giả: Jim Collins
-            </td>
-            <td>6.9$</td>
-            <td>999</td>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <td>{{$item->productId}}</td>
+                <td>{{$item->productName}}</td>
+                <td>Nhà xuất bản: {{$item->publisher }}
+                    <br>Tác giả: {{$item->author }}
+                </td>
+                <td>{{$item->newprice}}000đ</td>
+                <td>{{$item->quantity}}</td>
             </tr>
-            <tr>
+            @endforeach
+            
             <td>
                 <input type="checkbox">
             </td>
-            <td>2</td>
-            <td>B0001</td>
-            <td>Từ tốt đến vĩ đại</td>
-            <td>Nhà xuất bản: NXB Trẻ
-                <br>Tác giả: Jim Collins
-            </td>
-            <td>6.9$</td>
-            <td>999</td>
-            </tr>
-            <tr>
-            <td>
-                <input type="checkbox">
-            </td>
-            <td>3</td>
-            <td>B0001</td>
-            <td>Từ tốt đến vĩ đại</td>
-            <td>Nhà xuất bản: NXB Trẻ
-                <br>Tác giả: Jim Collins
-            </td>
-            <td>6.9$</td>
-            <td>999</td>
-            </tr>
-            <tr>
-            <td>
-                <input type="checkbox">
-            </td>
-            <td>4</td>
-            <td>B0001</td>
-            <td>Từ tốt đến vĩ đại</td>
-            <td>Nhà xuất bản: NXB Trẻ
-                <br>Tác giả: Jim Collins
-            </td>
-            <td>6.9$</td>
-            <td>999</td>
-            </tr>
-            <tr>
-            <td>
-                <input type="checkbox">
-            </td>
-            <td>5</td>
-            <td>B0001</td>
-            <td>Từ tốt đến vĩ đại</td>
-            <td>Nhà xuất bản: NXB Trẻ
-                <br>Tác giả: Jim Collins
-            </td>
-            <td>6.9$</td>
-            <td>999</td>
-            </tr>
-            <tr>
-            <td>
-                <input type="checkbox">
-            </td>
-            <td>6</td>
             <td>B0001</td>
             <td>Từ tốt đến vĩ đại</td>
             <td>Nhà xuất bản: NXB Trẻ
