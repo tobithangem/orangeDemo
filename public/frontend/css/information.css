@@ -1,0 +1,416 @@
+.container{
+    border: 0px solid;
+    background-color: white;
+}
+body{
+    background-color: gainsboro;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif   ;
+}
+.footer{
+    border-top: 10px solid gainsboro;
+    height: auto;
+    
+}
+.center{
+    width: 100%;
+    height: 500px;
+    background-color: gainsboro;
+}
+.form-cus{
+    
+    display: flex;
+    justify-content:space-between;
+    margin-top: 20px;
+    text-align: center;
+}
+.form-search{
+    border-radius: 4px;
+    border: black solid 1px ;
+    margin-top: 20px;
+    margin-left: 40%;
+    display: flex;
+    width: 60%;
+    height: 60%;
+    
+    
+}
+.logo{
+    margin-top: 10px;
+}
+.noti{
+    display: inline;
+}
+.search-input{
+    border: none;
+    width: 90%;
+    outline: none;
+    border-radius: 6px;
+    padding-left: 15px;
+}
+.icon-search{
+    width: 10%;
+    height: 100%;
+    text-align: center;
+    margin-top: 10px;
+    
+    font-weight: bold;
+}
+.bi-search{
+    height: 50px;
+    width: 50px;
+}
+.button-search{
+    border: none;
+    background-color: white;
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+    width: 100%;
+}
+a:hover{
+    color: black;
+}
+.left-footer{
+    text-align: left;
+    border-right: 1px solid;
+    
+}
+.logo-footer{
+    width: 80%;
+    
+    
+}
+.content-left-footer{
+    padding: 20px;
+    text-align: left;
+    font-size: 13px;
+    font-family: sans-serif;
+}
+.right-footer{
+    font-family: sans-serif;
+}
+.title-right{
+    margin-top: 20px;
+    
+}
+.content-line{
+    margin-top: 20px;
+}
+.center{
+    padding-left: 105px;
+    padding-right: 105px;
+    margin-top: 20px;
+    height: auto;
+    display: flex;
+}
+.left{
+    width: 40%;
+    height: 500px;
+}
+.img{
+    width: 100%;
+    height: 80%;
+    display: flex;
+}
+.small-img{
+    width: 30%;
+    border: 10px solid white;
+}
+.img1{
+    height: 130px;
+    padding-top: 5px ;
+    background-color: white;
+}
+.big-img{
+    width: 70%;
+    background-color: white;
+
+}
+.click{
+    display: flex;
+    height: 20%;
+    background-color: white;
+}
+.button-add{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+.button-buy{
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+.button-add button{
+    display: flex;
+    width: 200px;
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 20px;
+    border: 1px solid #252424;
+    background-color: #252424;
+}
+.button-add button .icon-add{
+    background: url('../img/iconMenu.png') no-repeat -1px -377px;
+	width: 24px;
+	height: 19px;
+    margin-top: 7px;
+}
+.button-add button .btn-text{
+    margin-left: 10px;
+    margin-top: 7px;
+}
+.button-buy button{
+    width: 200px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    background-color: red;
+}
+.right{
+    font-family: sans-serif;
+    width: 60%;
+    background-color: white;
+}
+.title{
+    font-size: 40px;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.infor{
+    display: flex;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.infor .publishing-company{
+    display: flex;
+}
+.infor .publishing-company .NXB{
+    margin-left: 5px;
+    font-weight: bold;
+}
+.infor .author{
+    display: flex;
+    margin-left: 50px;
+}
+.infor .author .TG{
+    margin-left: 5px;
+    font-weight: bold;
+}
+.cover-form{
+    display: flex;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+.cover-form .HTB{
+    margin-left: 5px;
+    font-weight: bold;
+}
+.introduce{
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+.price{
+    display: flex;
+    margin-left: 30px;
+    margin-top: 20px;
+    font-size: 25px;
+    color: red;
+}
+.price .GC{
+    margin-left: 10px;
+}
+.quantity{
+    display: flex;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+.number{
+    display: flex;
+    margin-left: 10px;
+}
+.number button{
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border: none;
+    text-align: center;
+}
+.number input{
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    border:none;
+    outline: black;
+}
+
+/* 
+.top-center{
+    justify-content: center;
+    height: 300px;
+}
+.flash-sale{
+    display: flex;
+    padding: 10px;
+    text-align: center;
+}
+.icon-top-center{
+    width: 40%;
+}
+.title-top-center{
+    text-align: center;
+}
+.left-top{
+    padding: 0;
+    border-right: gainsboro solid 5px;
+}
+.title-left-top{
+    text-align: center;
+    padding-top: 10px;
+}
+.right-top{
+    padding: 0;
+    border-bottom: gainsboro solid 3px;
+}
+.title-left-top{
+    text-align: center;
+    background-color: orange;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    height: 50px;
+    
+}
+.right-slide{
+    height: 400px;
+    border-top: gainsboro solid 5px;
+    background-color: gainsboro;
+} */
+/* body{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.center{
+    background: white;
+}
+.right-top{
+    height: 450px;
+}
+.left-top{
+    height: 450px;
+}
+.top-center{
+    height: 450px
+}
+.title-left-top{
+    height: 50px
+}
+#menu ul{
+height: 400px;
+list-style: none;
+padding: 0;
+}
+#menu ul li{
+width: auto;
+height: 50px;
+line-height: 50px;
+border-bottom: solid gainsboro 3px;
+position: relative;
+padding-left: 50px;
+}
+#menu .dropdown-menu{
+left: 300px;
+top: 0;
+width: 500px;
+position: absolute;
+display: none;
+text-align: center;
+}
+#menu ul li:hover .dropdown-menu{
+display: block;
+}
+.category{
+border-top: 10px solid gainsboro;
+border-bottom: 10px solid gainsboro;
+}
+.top-category{
+height: 50px;
+display: flex;
+background: #FCDAB0;
+text-align: center;
+padding: 10px;
+}
+.icon-title-category{
+    width: 8%;
+    text-align: center;
+
+}
+.title-category{
+    font-size: 18px;
+    font-weight: bold;
+}
+.img-book{
+    width: 10%;
+    padding-top: 5px;
+}
+.category-list-product{
+    text-align: center;
+    padding: 10px;
+    
+}
+.book-1{
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 10px;
+    border: 2px solid white;
+    
+}
+.book-1:hover{
+    border: 2px solid gainsboro;
+    
+}
+.name-book{
+    margin-top: 15px;
+    text-align: left;
+    font-size: 15px;
+    padding-left: 5px;
+    height: 40px;
+}
+.price-book{
+    margin-top: 20px;
+    text-align: left;
+    padding-left: 5px;
+}
+.new-price{
+    color:tomato;
+    font-size: 18px;
+    font-weight: bolder;
+}
+.old-price{
+    color: gray;
+    font-size: 15px;
+    text-decoration: line-through;
+}
+.bottom-category{
+    margin-top: 30px;
+    text-align: right;
+    height: 70px;
+    margin-right: 50px;
+    
+}
+.more-button{
+    background:rgb(0, 119, 255);
+    color: white;
+    border-radius: 15px;
+    width: 150px;
+}
+.more-button:hover{
+    background: rgb(25, 0, 255);
+    color: white;
+} */
