@@ -1,0 +1,46 @@
+.left-content{
+    padding: 0;
+    border-right: gainsboro solid 5px;
+}
+.right-content{
+    padding: 0;
+    
+}
+.category-list-product{
+    border-top: gainsboro solid 3px;
+}
+.sortby{
+    display: flex;
+    justify-content: right;
+}
+.filter{
+    border-top: gainsboro solid 10px;
+}
+.label-filter{
+    padding-left: 20px;
+    margin: 5px;
+    padding-top: 5px;;
+    width: 100%;
+    border-top: gainsboro solid 2px;
+}
+.checkbox{
+    padding-left: 50px;
+    color: gray;
+    font-size: 16px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+
+}
+.title-filter{
+    padding-left: 0px;
+    text-align: center;
+    background-color: orange;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    height: auto;
+}
+.menu{
+    height: 400px;
+}

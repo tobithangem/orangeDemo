@@ -19,6 +19,12 @@ use Illuminate\Support\Facades\Route;
  * Frontend Route
  */
 
+    Route::get('/homepage', function () {
+        return view('frontend.homepage');
+    });
+    Route::get('/category', function () {
+        return view('frontend.category');
+    })->name('vanhoc');
 
 
 
