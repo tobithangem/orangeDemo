@@ -7,7 +7,7 @@
     <div class="logout">
         <a class="btn-logout" href="{{route('admin.login')}}">
             <i class="fas fa-sign-out-alt"></i>
-            Logout
+            Thoát
         </a>
     </div>
 </div>

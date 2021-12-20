@@ -71,6 +71,7 @@ input.search-form {
     width: 100%;
     padding-left: 5%;
     padding-right: 5%;
+    color: black;
 }
 .table-book tr {
     border-bottom: 1px solid;
@@ -118,7 +119,7 @@ th, td {
     align-items: center;
     justify-content: center;
     transition: opacity linear 0.2s;
-    visibility: hidden;
+    visibility: hidden; 
 }
 .overlay {
     background-color: rgba(0, 0, 0, 0.5);
@@ -126,7 +127,7 @@ th, td {
 .dialog .dialog-body {
     position: relative;
     width: 800px;
-    height: 450px;
+    height: 500px;
     /* background-color: #f2f2f2; */
     background-color: white;
     border-radius: 4px;
@@ -142,7 +143,7 @@ th, td {
 .dialog-body .infor{
     width: 100%;
     height: 300px;
-    border-bottom: 1px solid;
+    border-bottom: 1px none;
     padding: 5px;
     display: flex;
 }
@@ -154,6 +155,7 @@ th, td {
     padding-left: 5px;
     padding-right: 5px;
     position: relative;
+    margin-right: 20px;
 }
 .area-img > img {
     width: 100%;
@@ -196,7 +198,7 @@ th, td {
 
 .dialog-body .description {
     display: flex;
-    margin-top: 10px;
+    margin-top: 50px;
     margin-left: 30px;
     color: black;
 }
@@ -241,4 +243,10 @@ th, td {
 .btn-savedialog:hover {
     color: white;
     background-color: rgb(57, 170, 53);
+}
+#category {
+    height: 34px;
+border: 1px solid black;
+border-radius: 4px;
+padding-left: 15px;
 }
