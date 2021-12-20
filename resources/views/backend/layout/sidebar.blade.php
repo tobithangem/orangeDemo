@@ -1,3 +1,6 @@
+
+
+
 <div id="sidebar">
     <ul class="sidebar">
         <li class="sidebar-infor">
@@ -7,31 +10,31 @@
         <li class="sidebar-dashboard">
             <a href="{{route('admin.dashboard')}}">
                 <i class="fas fa-tractor" ></i>
-                Dashboard
+                Thống kê
             </a>
         </li>
         <li class="sidebar-product">
             <a href="{{route('admin.product')}}">
                 <i class="fas fa-snowplow"></i>
-                Products Manager
+                Quản lí sản phẩm
             </a>
 
         </li>
         <li class="sidebar-ordercollapse">
             <a href="#" role="button" data-toggle="collapse" data-target="#ordercollapse">
                 <i class="fas fa-truck-monster"></i>
-                Orders Manager
+                Quản lí đơn hàng
             </a>
             <ul class="collapse" id="ordercollapse">
-                <li>Pending</li>
-                <li>Shipping</li>
-                <li>Shipped</li>
+                <li>Đang đợi</li>
+                <li>Đang giao</li>
+                <li>Đã giao</li>
             </ul>
         </li>
         <li class="sidebar-contact">
             <a href="#">
                 <i class="far fa-paper-plane"></i>
-                Contact Master
+                Liên hệ
             </a>
 
         </li>

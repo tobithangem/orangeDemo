@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orange -Admin Login</title>
+    <title>Admin - Đăng nhập</title>
 
     <link href="{{asset('/backend/css/login.css')}}" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Ruda' rel='stylesheet'>
@@ -22,14 +22,14 @@
         <div class="login-r">
             <div class="login-form">
                 <p class="logo">orange</p>
-                <form action="{{route('admin.dashboard')}}">
+                <form action="{{route('admin.login')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    Username <br> 
-                    <input type="text"> <br>
-                    Password <br>
-                    <input type="text"> <br>
-                    <input type="checkbox" checked="checked"> Remember me <br>
-                    <button type="submit">Login</button>
+                    Tài khoản <br> 
+                    <input type="text" name="admin_name" required> <br>
+                    Mật khẩu <br>
+                    <input type="password" name="admin_password" required> <br>
+                    <input type="checkbox" checked="checked"> Lưu tài khoản <br>
+                    <button type="submit">Đăng nhập</button>
                 </form>
             </div>
         </div>

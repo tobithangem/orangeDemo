@@ -1,32 +1,32 @@
 @extends('backend.layout.app')
 
-@section('title', 'Admin dashboard')
+@section('title', 'Thống kê')
 
 @section('content')
 <div id="content">
     <h3>
         <i class="fas fa-tractor" ></i>
-        Dashboard
+        Tổng quan
     </h3>
     <div class="db-chart">
         <div class="dbchart-t">
             <div class="db-box1">
-                <h5>Monthly Sales</h5>
+                <h5>Doanh thu tháng này</h5>
                 <h4>31,210$</h4>
-                <p>Increased by 24%</p>
+                <p>Tăng 1.232$</p>
                 <img src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/dashboard/circle.svg" alt="">
 
             </div>
             <div class="db-box2">
-                <h5>Monthly Order</h5>
+                <h5>Số đơn tháng này</h5>
                 <h4>1,232</h4> 
-                <p>Increased by 20%</p>
+                <p>Tăng 123 đơn</p>
                 <img src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/dashboard/circle.svg" alt="">  
             </div>
             <div class="db-box3">
-                <h5>Customers</h5>  
-                <h4>5,413 member</h4> 
-                <p>Increased 612 mem</p>
+                <h5>Số lượng thành viên</h5>  
+                <h4>5,413</h4> 
+                <p>Tăng 612 thành viên</p>
                 <img src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/dashboard/circle.svg" alt="">
             </div>
         </div>

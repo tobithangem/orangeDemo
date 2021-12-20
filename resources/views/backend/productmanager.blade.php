@@ -1,31 +1,31 @@
 @extends('backend.layout.app')
 
-@section('title', 'Product Manager')
+@section('title', 'Quản lí sách')
 
 @section('content')
 <div id="content">
     <div class="product-manager">
         <h3>
             <i class="fas fa-snowplow"></i>
-            Product Manager
+            Danh sách sản phẩm
         </h3>
         <div class="filter">
             <div class="searchform">
                 <i class="fas fa-search"></i>
-                <input class="search-form" type="search" placeholder="Find by product code">
+                <input class="search-form" type="search" placeholder="Tìm sản phẩm">
             </div>
             <div>
                 <a class="btn-additem" href="#dialog">
                     <i class="fas fa-plus"></i>
-                    Add new Book
+                    Thêm mới
                 </a>
-                <a class="btn-edititem">
+                <a class="btn-edititem" href="#dialog">
                     <i class="fas fa-edit"></i>
-                    Check or Change
+                    Xem hoặc Sửa
                 </a>
                 <button class="btn-deleteitem">
                 <i class="fas fa-minus"></i>
-                Delete
+                Xóa
                 </button>
 
             </div>
@@ -34,40 +34,28 @@
     <div class="table-book" >
         <table>
             <tr>
-            <th></th>
-            <th>Product Code</th>
-            <th>Product Name</th>
-            <th>Product Infor</th>
-            <th>Price</th>
-            <th>In stock</th>
+            <th>Checkbox</th>
+            <th>Mã sách</th>
+            <th>Tên sách</th>
+            <th>Thông tin sách</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
             </tr>
             
-            @foreach ($product as $item)
+            @foreach ($products as $item)
             <tr>
                 <td>
-                    <input type="checkbox">
+                    <input type="checkbox" value="{{$item->productId}}">
                 </td>
                 <td>{{$item->productId}}</td>
                 <td>{{$item->productName}}</td>
-                <td>Nhà xuất bản: {{$item->publisher }}
-                    <br>Tác giả: {{$item->author }}
+                <td>Tác giả: {{$item->author }}
+                    <br>Thể loại: {{$item->category }}
                 </td>
-                <td>{{$item->newprice}}000đ</td>
+                <td>{{$item->price}}đ</td>
                 <td>{{$item->quantity}}</td>
             </tr>
             @endforeach
-            
-            <td>
-                <input type="checkbox">
-            </td>
-            <td>B0001</td>
-            <td>Từ tốt đến vĩ đại</td>
-            <td>Nhà xuất bản: NXB Trẻ
-                <br>Tác giả: Jim Collins
-            </td>
-            <td>6.9$</td>
-            <td>999</td>
-            </tr>
         </table>
         <div class="pagi">
             <a href="#">
@@ -83,63 +71,77 @@
     </div>
 </div>
 <div class="dialog overlay" id="dialog">
-    <div class="dialog-body">
+    <form class="dialog-body" method="POST" enctype="multipart/form-data" action="{{route('admin.store_product')}}">
+        @csrf
         <div class="infor">
             <div class="area-img">
                 <img id="item-img" src="#" alt="Book Image">
-                <input type="file" onchange="readURL(this);">
+                <input type="file" name="file" onchange="readURL(this);">
             </div>
             <div class="area-basicinfor">
                 <table>
                     <tr>
-                        <td>Product Code
-                            <input type="text" class="text-infor">
+                        <td>Tên sách
+                            <input type="text" name="productName" class="text-infor" required>
                         </td>
-                        <td>Author
-                            <input type="text" class="text-infor">
+                        <td>Tác giả
+                            <input type="text" name="author" class="text-infor" required>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Translator
-                            <input type="text" class="text-infor">
+                            Người dịch
+                            <input type="text" name="translator"  class="text-infor" required>
                         </td>
                         <td>
-                            Publishing company
-                            <input type="text" class="text-infor">
+                            Nhà xuất bản
+                            <input type="text"  name="publisher" class="text-infor" required>
                         </td>
                     </tr>
                     <tr>
-                        <td>Pages
-                            <input type="text" class="text-infor">
+                        <td>Số trang
+                            <input type="text" name="numberPage"  class="text-infor" required>
                         </td>
-                        <td>Book Size
-                            <input type="text" class="text-infor">
+                        <td>Số lượng
+                            <input type="text" name="quantity"  class="text-infor" required>
                         </td>
                     </tr>
                     <tr>
-                        <td>Release
-                            <input type="date" class="text-infor">
+                        <td>Ngày ra mắt
+                            <input type="date" name="publicDate"  class="text-infor" required>
+                        </td>
+                        <td>Giá
+                            <input type="text" name="price" class="text-infor" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Thể loại
+                            <select name="category" id="category" required>
+                                <option value="">Chọn thể loại sách</option>
+                                    @foreach ($categories as $category)
+                                    <option value="{{$category->category}}">{{$category->category}}</option>
+                                    @endforeach
+                              </select>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
         <div class="description">
-            <p>Description</p>
-            <textarea class="text-des" name="" id="" cols="90" rows="4"></textarea>
+            <p>Giới thiệu</p>
+            <textarea class="text-des" name="description"  id="" cols="90" rows="4" required></textarea>
         </div>
         <div class="dialog-action">
-            <a href="#" class="btn-savedialog">
+            <button type="submit" class="btn-savedialog">
                 <i class="far fa-save"></i>
                 Save
-            </a>
+            </button>
             <a href="#" class="btn-canceldialog">
                 <i class="fas fa-times"></i>
                 Cancel
             </a>
         </div>
-    </div>
+    </form>
 </div>
 
 <script>
