@@ -19,7 +19,7 @@
             </div>
             <div class="db-box2">
                 <h5>Monthly Order</h5>
-                <h4>1,232</h4> 
+                <h4>1,232</h4>
                 <p>Increased by 20%</p>
                 <img src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/dashboard/circle.svg" alt="">  
             </div>

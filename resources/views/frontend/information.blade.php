@@ -14,13 +14,14 @@ crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
     <link rel="stylesheet" href="{{asset('/frontend/css/information.css')}}">
+    <link rel="stylesheet" href="{{asset('/frontend/css/app.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
 <style>
     
 </style>
 </head>
 <body>
-    <div class= "container">
+    <!-- <div class= "container">
         <div class="row">
             <div class="col-sm-2">
                 <div class="logo">
@@ -66,8 +67,11 @@ crossorigin="anonymous">
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+    @include('frontend.header')
+    @include('frontend.topline')
     <div class = "center">
+    @foreach ($productdetail as $item)
         <div class="left">
             <div class="img">
                 <div class="small-img">
@@ -99,8 +103,9 @@ crossorigin="anonymous">
                 </div>
             </div>
         </div>
+        
         <div class="right">
-            <div class="title">Kẻ sát nhân lương thiện</div>
+            <div class="title">{{$item->productName}}</div>
             <div class="infor">
                 <div class="publishing-company">
                     Nhà xuất bản:
@@ -134,6 +139,7 @@ crossorigin="anonymous">
                 </div>
             </div>
         </div>
+    @endforeach
     </div>
     <div class = "footer">
         <div class="container">

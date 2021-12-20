@@ -4,7 +4,7 @@
                 <div class="col-4" style = "background-color:white">
                     <div class = "left-footer">
                         <div class = "logo-footer"> 
-                            <img src="../img/logo.png" alt="" style = " width:100%">
+                            <img src="{{asset('/frontend/img/logo.png')}}" alt="" style = " width:100%">
                         </div>
                         <div class = "content-left-footer">
                             <div>Tầng 5 toà nhà 1194 Láng - Thành phố Hà Nội</div>

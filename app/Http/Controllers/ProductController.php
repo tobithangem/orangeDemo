@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     /**
@@ -16,7 +16,23 @@ class ProductController extends Controller
     {
         //
     }
-
+    /**
+     * display item product in homepage
+     */
+    
+    public function homepage(){
+        $newproduct = DB::table('product')
+            ->orderBy('publicDate', 'desc')
+            ->get();
+        return view('frontend.homepage', compact('newproduct'));
+    }
+    public function detail($id){
+        $productdetail = DB::table('product')
+            ->where('productId', $id)
+            ->get();
+        return view('frontend.information', compact('productdetail'));
+    }
+    
 
     /**
      * display item product in admin product manager page
