@@ -6,6 +6,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 class ProductController extends Controller
 {
     /**
@@ -73,7 +75,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // được cập nhật bởi thắng em
-        $file = $request->file('file')->store('products');
+        $file = $request->file('file')->store('public');
         $book_name = $request->input('productName');
         $author = $request->input('author');
         $translator = $request->input('translator');
@@ -82,25 +84,38 @@ class ProductController extends Controller
         $quantity = $request->input('quantity');
         $public_date = $request->input('publicDate');
         $description = $request->input('description');
+        $product_code = $request->input('productCode');
         $create_at = date("y-m-d h:i:s");
         $price = $request->input('price');
         $categories = $request->input('category');
-        DB::table('products')->insert([
-            'productName' => $book_name,
-            'prductImage' => $file,
-            'category' => $categories,
-            'price' => $price,
-            'quantity' => $quantity,
-            'author' => $author,
-            'translator' => $translator,
-            'publisher' => $publisher,
-            'numberPage' => $number_page,
-            'publicDate' => $public_date,
-            'description' => $description,
-            'created_at' => $create_at
-        ]); 
- 
-            return back()->withInput();
+
+        $product_check =  DB::table('products')->where('productCode', '=', $product_code)->count();
+        if ($product_check == 0) {
+            DB::table('products')->insert([
+                'productName' => $book_name,
+                'prductImage' => $file,
+                'category' => $categories,
+                'price' => $price,
+                'quantity' => $quantity,
+                'author' => $author,
+                'translator' => $translator,
+                'publisher' => $publisher,
+                'numberPage' => $number_page,
+                'publicDate' => $public_date,
+                'description' => $description,
+                'created_at' => $create_at,
+                'productCode' => $product_code
+            ]); 
+            $value = 'Thêm thành công';
+            $request->session()->put('message_add', $value);
+            return redirect()->back()->with('message_add', $value);
+            
+        }
+        else {
+            $value = 'Thêm thất bại, mã sách đã tồn tại';
+            $request->session()->put('message_add', $value);
+            return redirect()->back()->with('message_add', $value);;
+        };
     }
 
     /**

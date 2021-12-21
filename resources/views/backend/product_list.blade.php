@@ -119,6 +119,10 @@
                                     @endforeach
                               </select>
                         </td>
+                        <td>
+                            Mã sản phẩm
+                            <input type="text" name="translator"  class="text-infor" required>
+                        </td>
                     </tr>
                 </table>
             </div>
