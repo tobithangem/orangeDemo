@@ -97,22 +97,24 @@
                 </div>
                 <div class="category-list-product">
                     <div class="row">
-                        
+                    @foreach ($bestseller as $item)
                         <div class="col">
                             <div class="book-1">
+                                <a href="">
                                 <div class="img-book">
-                                    <img src="../img/book1.png" alt="" style ="width:200px">
+                                    <img src="{{asset('/frontend/img/book1.png')}}" alt="" style ="width:200px">
                                 </div>
                                 <div class="name-book">
-                                    <a href="http://">Một phút với Steve Jobs Một phút với Steve Jobs</a>
+                                    <a>{{$item->productName}}</a>
                                     
                                 </div>
+                                </a>
                                 <div class="price-book">
                                     <div class="new-price">
-                                        100.000đ
+                                    {{$item->price}} vnđ
                                     </div>
                                     <div class="old-price">
-                                        150.000đ
+                                    
                                     </div>
                                 </div>
                                 <div class="rate-book"></div>
@@ -120,82 +122,8 @@
 
                             </div>
                         </div>
-                        <div class="col">
-                        <div class="book-1">
-                                <div class="img-book">
-                                    <img src="../img/book2.png" alt="" style ="width:200px">
-                                </div>
-                                <div class="name-book">Từ điển tiếng "Em"</div>
-                                <div class="price-book">
-                                    <div class="new-price">
-                                        100.000đ
-                                    </div>
-                                    <div class="old-price">
-                                        150.000đ
-                                    </div>
-                                </div>
-                                <div class="rate-book"></div>
-                                <div class="amount-sold"></div>
-
-                            </div>
-                        </div>
-                        <div class="col">
-                        <div class="book-1">
-                                <div class="img-book">
-                                    <img src="../img/book3.png" alt="" style ="width:200px">
-                                </div>
-                                <div class="name-book">Chiến binh cầu vồng</div>
-                                <div class="price-book">
-                                    <div class="new-price">
-                                        100.000đ
-                                    </div>
-                                    <div class="old-price">
-                                        150.000đ
-                                    </div>
-                                </div>
-                                <div class="rate-book"></div>
-                                <div class="amount-sold"></div>
-
-                            </div>
-                        </div>
-                        <div class="col">
-                        <div class="book-1">
-                                <div class="img-book">
-                                    <img src="../img/book4.png" alt="" style ="width:200px">
-                                </div>
-                                <div class="name-book">Nhà giả kim</div>
-                                <div class="price-book">
-                                    <div class="new-price">
-                                        100.000đ
-                                    </div>
-                                    <div class="old-price">
-                                        150.000đ
-                                    </div>
-                                </div>
-                                <div class="rate-book"></div>
-                                <div class="amount-sold"></div>
-
-                            </div>
-                        </div>
-                        <div class="col">
-                        <div class="book-1">
-                                <div class="img-book">
-                                    <img src="../img/book5.png" alt="" style ="width:200px">
-                                </div>
-                                <div class="name-book">Cây cam ngọt của tôi</div>
-                                <div class="price-book">
-                                    <div class="new-price">
-                                        100.000đ
-                                    </div>
-                                    <div class="old-price">
-                                        150.000đ
-                                    </div>
-                                </div>
-                                <div class="rate-book"></div>
-                                <div class="amount-sold"></div>
-
-                            </div>
-                        </div>
+                        @endforeach
+                        <!--  -->
                     </div>
 
                 </div>
@@ -222,11 +150,9 @@
                                 <div class="name-book">{{$item->productName}}</div>
                                 <div class="price-book">
                                     <div class="new-price">
-                                        {{$item->newPrice}}
+                                        {{$item->price}} vnđ
                                     </div>
-                                    <div class="old-price">
-                                        {{$item->price}}
-                                    </div>
+                                    
                                 </div>
                                 <div class="rate-book"></div>
                                 <div class="amount-sold">

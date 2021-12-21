@@ -69,7 +69,7 @@ crossorigin="anonymous">
         </div>
     </div> -->
     @include('frontend.header')
-    @include('frontend.topline')
+    
     <div class = "center">
     @foreach ($productdetail as $item)
         <div class="left">

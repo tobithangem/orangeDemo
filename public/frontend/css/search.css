@@ -1,0 +1,25 @@
+.category-list-product{
+    background-color: white;
+    min-height: 500px;
+    height: auto;
+}
+.labelsearch{
+    text-align: left;
+    font-style: italic;
+    font-size: 20px;
+    width: 90%;
+}
+.labeltop{
+    display: flex;
+}
+.sortby{
+    width: 180px;
+    float: right;
+}
+.list-product{
+    margin-left: 50px;
+}
+.img-book{
+    text-align: center !important;
+    margin-left: 30px;
+}

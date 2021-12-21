@@ -13,7 +13,7 @@
                             <div id="menu">
                                 <ul>
                                     <li class="a">
-                                        <a href="{{route('vanhoc')}}">Văn Học</a>
+                                        <a href="{{asset('/category/Văn Học')}}">Văn Học</a>
                                         <!-- <div class="dropdown-menu">
                                             <div class="row">
                                                 <div class="col-6"><a href="http://">Tiểu thuyết</a></div>
@@ -28,7 +28,7 @@
                                         </div> -->
                                     </li>
                                     <li>
-                                        <a class="a" >Tâm lý - Kỹ năng sống</a>
+                                        <a href="{{asset('/category/Tâm lý - Kỹ năng sống')}}" >Tâm lý - Kỹ năng sống</a>
                                         <!-- <div class="dropdown-menu">
                                             <div class="row">
                                                 <div class="col-6"><a href="http://">Tiểu thuyết</a></div>
@@ -43,7 +43,7 @@
                                         </div> -->
                                     </li>
                                     <li>
-                                        <a href="">Sách thiếu nhi</a>
+                                        <a href="{{asset('/category/Sách thiếu nhi')}}">Sách thiếu nhi</a>
                                         <!-- <div class="dropdown-menu">
                                             <div class="row">
                                                 <div class="col-6"><a href="http://">Tiểu thuyết</a></div>
@@ -58,7 +58,7 @@
                                         </div> -->
                                     </li>
                                     <li>
-                                        <a href="">Giáo khoa - Tham khảo</a>
+                                        <a href="{{asset('/category/Giáo khoa - Tham khảo')}}">Giáo khoa - Tham khảo</a>
                                         <!-- <div class="dropdown-menu">
                                             <div class="row">
                                                 <div class="col-6"><a href="http://">Tiểu thuyết</a></div>
@@ -73,7 +73,7 @@
                                         </div> -->
                                     </li>
                                     <li>
-                                        <a href="">Tiểu sử - Hồi kí</a>
+                                        <a href="{{asset('/category/Tiểu sử - Hồi kí')}}">Tiểu sử - Hồi kí</a>
                                         <!-- <div class="dropdown-menu">
                                             <div class="row">
                                                 <div class="col-6"><a href="http://">Tiểu thuyết</a></div>
@@ -88,7 +88,7 @@
                                         </div> -->
                                     </li>
                                     <li>
-                                        <a href="">Sách học ngoại ngữ</a>
+                                        <a href="{{asset('/category/Sách ngoại ngữ')}}">Sách học ngoại ngữ</a>
                                         <!-- <div class="dropdown-menu">
                                             <div class="row">
                                                 <div class="col-6"><a href="http://">Tiểu thuyết</a></div>
