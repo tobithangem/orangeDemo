@@ -19,12 +19,18 @@ use Illuminate\Support\Facades\Route;
  * Frontend Route
  */
 
-    Route::get('/homepage', function () {
-        return view('frontend.homepage');
-    });
+    // Route::get('/homepage', function () {
+    //     return view('frontend.homepage');
+    // });
     Route::get('/category', function () {
         return view('frontend.category');
     })->name('vanhoc');
+    
+    Route::get('/homepage', [ProductController::class, 'homepage'])->name('homepage');
+    Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
+    Route::get('/information', function () {
+        return view('frontend.information');
+    });
 
 
 

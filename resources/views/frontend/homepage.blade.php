@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-<script src="https://unpkg.com/@popperjs/core@2"></script>
-    <link rel="stylesheet" href="{{asset('/frontend/css/app.css')}}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
-<style>
-    
-</style>
-</head>
+@extends('frontend.app')
 <body>
     <!-- <div class= "container">
         <div class="row">
@@ -66,8 +48,8 @@
         </div>
     </div> -->
     <!--Header-->
-    @include('frontend.header')
-    @include('frontend.listcategory')
+    
+    @section('content')
                         <div class="right-slide">
                                 <!-- Carousel -->
                             <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -82,13 +64,13 @@
                             <!-- The slideshow/carousel -->
                             <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="../img/slide1.png" alt="Los Angeles" class="d-block w-100" style="height:398px">
+                                <img src="{{asset('/frontend/img/slide1.png')}}" alt="Los Angeles" class="d-block w-100" style="height:398px">
                             </div>
                             <div class="carousel-item">
-                                <img src="../img/slide2.png" alt="Chicago" class="d-block w-100" style="height:398px">
+                                <img src="{{asset('/frontend/img/slide2.png')}}" alt="Chicago" class="d-block w-100" style="height:398px">
                             </div>
                             <div class="carousel-item">
-                                <img src="../img/slide3.png" alt="New York" class="d-block w-100" style="height:398px">
+                                <img src="{{asset('/frontend/img/slide3.png')}}" alt="New York" class="d-block w-100" style="height:398px">
                             </div>
                             </div>
 
@@ -109,7 +91,7 @@
             <div class="category">
                 <div class="top-category">
                     <div class="icon-title-category">
-                        <img src="../img/ico-xuhuong.png" style = "width:30%" alt="">
+                        <img src="{{asset('/frontend/img/ico-xuhuong.png')}}" style = "width:30%" alt="">
                     </div>
                     <div class="title-category">SÁCH BÁN CHẠY NHẤT THÁNG</div>
                 </div>
@@ -134,7 +116,7 @@
                                     </div>
                                 </div>
                                 <div class="rate-book"></div>
-                                <div class="amount-sold"></div>
+                                <div class="amount-sold"> Đã bán 10</div>
 
                             </div>
                         </div>
@@ -225,33 +207,36 @@
             <div class="category">
                 <div class="top-category">
                     <div class="icon-title-category">
-                        <img src="../img/ico-xuhuong.png" style = "width:30%" alt="">
+                        <img src="{{asset('/frontend/img/ico-xuhuong.png')}}" style = "width:30%" alt="">
                     </div>
                     <div class="title-category">SÁCH MỚI RA MẮT</div>
                 </div>
                 <div class="category-list-product">
                     <div class="row">
-                        
+                    @foreach ($newproduct as $item)
                         <div class="col">
                             <div class="book-1">
                                 <div class="img-book">
-                                    <img src="../img/book6.png" alt="" style ="width:200px">
+                                    <img src="{{asset('/frontend/img/book6.png')}}" alt="" style ="width:200px">
                                 </div>
-                                <div class="name-book">Tôi là Bêtô</div>
+                                <div class="name-book">{{$item->productName}}</div>
                                 <div class="price-book">
                                     <div class="new-price">
-                                        100.000đ
+                                        {{$item->newprice}}
                                     </div>
                                     <div class="old-price">
-                                        150.000đ
+                                        {{$item->oldprice}}
                                     </div>
                                 </div>
                                 <div class="rate-book"></div>
-                                <div class="amount-sold"></div>
+                                <div class="amount-sold">
+                                    Đã bán 10
+                                </div>
 
                             </div>
                         </div>
-                        <div class="col">
+                        @endforeach
+                        <!-- <div class="col">
                         <div class="book-1">
                                 <div class="img-book">
                                     <img src="../img/book7.png" alt="" style ="width:200px">
@@ -326,7 +311,7 @@
                                 <div class="amount-sold"></div>
 
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -408,7 +393,8 @@
             </div>
         </div>
     </div> -->
-    @include('frontend.footer')
+
 </body>
     
 </html>
+@endsection
