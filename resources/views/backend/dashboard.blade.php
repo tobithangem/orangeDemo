@@ -18,11 +18,9 @@
 
             </div>
             <div class="db-box2">
-
                 <h5>Số đơn tháng này</h5>
                 <h4>1,232</h4> 
                 <p>Tăng 123 đơn</p>
-
                 <img src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/dashboard/circle.svg" alt="">  
             </div>
             <div class="db-box3">

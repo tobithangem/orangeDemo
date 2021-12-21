@@ -24,7 +24,7 @@ input.search-form {
 }
 .btn-additem {
     border-radius: 4px;
-    border: 1px solid #3e7a83; 
+    
     background-color: #68dff0;
     padding-left: 15px;
     padding-top: 6px;
@@ -35,7 +35,7 @@ input.search-form {
 }
 .btn-deleteitem {
     border-radius: 4px;
-    border: 1px solid #b82f0c; 
+    
     background-color: rgb(247, 70, 70);
     padding-left: 15px;
     padding-top: 5px;
@@ -45,7 +45,7 @@ input.search-form {
 }
 .btn-edititem {
     border-radius: 4px;
-    border: 1px solid rgb(0, 92, 0);
+    
     background-color: rgb(153, 226, 44);
     padding-left: 15px;
     padding-top: 6px;
@@ -69,8 +69,7 @@ input.search-form {
 .table-book {
     margin-top: 30px;
     width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 40px;
     color: black;
 }
 .table-book tr {
@@ -249,4 +248,93 @@ th, td {
 border: 1px solid black;
 border-radius: 4px;
 padding-left: 15px;
+}
+
+
+.product-manager-add .form-add {
+    width: 100%;
+    height: auto;
+    display: flex;
+    margin-top: 40px;
+}
+.form-add-img {
+    width: 240px;
+    height: 100%;
+    margin-right: 40px;
+    text-align: -webkit-center;
+    padding-top: 10px;
+}
+.form-add-img > img {
+    width: 160px;
+    height: 100%;
+}
+.form-add-img input {
+    text-align-last: center;
+}
+.form-add-table {
+    width: calc(100% - 280px);
+}
+.add-table-input {
+    border-radius: 4px;
+    border: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    width: 200px;
+    text-align-last: center;
+}
+.add-table-td {
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+.add-table-td select {
+    width: 200px;
+} 
+
+.box2-form-add {
+    display: flex;
+    height: 170px;
+}
+.ele1 {
+    width: 70%;
+    height: 150px;
+}
+.ele1 textarea {
+    height: 150px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.ele2 {
+    width: 30%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-save-addform {
+    padding: 15px 5px 15px 5px;
+    border-radius: 50%;
+    background-color: rgb(76, 247, 70);
+    margin-top: 10px;
+}
+.btn-save-addform button {
+    background-color: transparent;
+    color: white;
+}
+.btn-save-addform:hover {
+    background-color: rgb(57, 170, 53);
+}
+.product-manager-add {
+    padding-top: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.add_message {
+    font-size: 20px;
+    font-weight: bold;
+    color: orange;
+    text-align: center;
+    margin-top: 15px;
 }
