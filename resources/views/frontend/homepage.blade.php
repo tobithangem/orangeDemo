@@ -222,10 +222,10 @@
                                 <div class="name-book">{{$item->productName}}</div>
                                 <div class="price-book">
                                     <div class="new-price">
-                                        {{$item->newprice}}
+                                        {{$item->newPrice}}
                                     </div>
                                     <div class="old-price">
-                                        {{$item->oldprice}}
+                                        {{$item->price}}
                                     </div>
                                 </div>
                                 <div class="rate-book"></div>

@@ -76,23 +76,22 @@ crossorigin="anonymous">
             <div class="img">
                 <div class="small-img">
                     <div class="img1">
-                        <img src="../img/image_217141.jpg" class="d-block w-100">
+                        <img src="../../../public/frontend/img/image_217141.jpg" class="d-block w-100">
                     </div>
                     <div class="img1">
-                        <img src="../img/image_217141.jpg" class="d-block w-100">
+                        <img src="../../../public/frontend/img/image_217141.jpg" class="d-block w-100">
                     </div>
                     <div class="img1">
-                        <img src="../img/image_217141.jpg" class="d-block w-100">
+                        <img src="../../../public/frontend/img/image_217141.jpg" class="d-block w-100">
                     </div>
                 </div>
                 <div class="big-img">
-                    <img src="../img/image_217141.jpg" style="height: 300px; margin-top: 35px">
+                    <img src="../../../public/frontend/img/image_217141.jpg" style="height: 300px; margin-top: 35px">
                 </div>
             </div>
             <div class="click">
                 <div class="button-add">
                     <button>
-                        <div class="icon-add"></div>
                         <div class="btn-text" style="color: white">Thêm vào giỏ hàng</div>
                     </button>
                 </div>

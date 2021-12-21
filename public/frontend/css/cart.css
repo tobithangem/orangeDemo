@@ -1,0 +1,248 @@
+.container{
+    border: 0px solid;
+    background-color: white;
+}
+body{
+    background-color: gainsboro;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif   ;
+}
+.footer{
+    border-top: 10px solid gainsboro;
+    height: auto;
+    
+}
+.center{
+    width: 100%;
+    height: auto;
+    background-color: gainsboro;
+}
+.form-cus{
+    
+    display: flex;
+    justify-content:space-between;
+    margin-top: 20px;
+    text-align: center;
+}
+.form-search{
+    border-radius: 4px;
+    border: black solid 1px ;
+    margin-top: 20px;
+    margin-left: 40%;
+    display: flex;
+    width: 60%;
+    height: 60%;
+    
+    
+}
+.logo{
+    margin-top: 10px;
+}
+.noti{
+    display: inline;
+}
+.search-input{
+    border: none;
+    width: 90%;
+    outline: none;
+    border-radius: 6px;
+    padding-left: 15px;
+}
+.icon-search{
+    width: 10%;
+    height: 100%;
+    text-align: center;
+    margin-top: 10px;
+    
+    font-weight: bold;
+}
+.bi-search{
+    height: 50px;
+    width: 50px;
+}
+.button-search{
+    border: none;
+    background-color: white;
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+    width: 100%;
+}
+a:hover{
+    color: black;
+}
+.left-footer{
+    text-align: left;
+    border-right: 1px solid;
+    
+}
+.logo-footer{
+    width: 80%;
+    
+    
+}
+.content-left-footer{
+    padding: 20px;
+    text-align: left;
+    font-size: 13px;
+    font-family: sans-serif;
+}
+.right-footer{
+    font-family: sans-serif;
+}
+.title-right{
+    margin-top: 20px;
+    
+}
+.content-line{
+    margin-top: 20px;
+}
+.center{
+    font-family: sans-serif;
+}
+.title{
+    height: 50px;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 30px;
+}
+.toolbar{
+    display: flex;
+    height: auto;
+
+}
+.header-item-cart{
+    align-items: center;
+    height: 50px;
+}
+.detail-item-cart{
+    align-items: center;
+    border: 1px solid gray;
+    height: 150px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+.checkbox{
+    width: 20px;
+    padding-left: 5px;
+}
+.select-all{
+    width: 300px;
+    padding-left: 20px;
+    display: flex;
+}
+.select-all .name-book{
+    align-self: center;
+    padding-left: 20px;
+}
+.quantity{
+    width: 100px;
+    text-align: center;
+}
+.quantity .number{
+    justify-content: center;
+    border: 1px solid #000000;
+}
+.quantity .number button{
+    width: 30px;
+    background-color: white;
+    border: none;
+}
+.quantity .number input{
+    width: 30px;
+    text-align: center;
+    border: none;
+}
+.quantity .number input:focus{
+    outline: none;
+}
+.price{
+    width: 100px;
+    text-align: center;
+}
+.total{
+    width: 100px;
+    text-align: center;
+}
+.delete{
+    width: calc(100% - 620px);
+    text-align: center;
+}
+.delete button{
+    display: flex;
+    width: 100px;
+    height: 30px;
+    justify-content: center;
+    outline: none;
+    align-items: center;
+    border: none;
+    background-color: white;
+}
+.delete button:hover{
+    background-color: #e9ecef;
+}
+.delete button .btn-icon{
+    background: url('../../../public/frontend/img/iconDelete.png') no-repeat -8px -5px;
+	width: 22px;
+	height: 22px;
+    
+}
+.header-buy{
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+}
+.price-buy{
+    height: calc(100% - 50px);
+    border: 1px solid #000000;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+.price-product{
+    display: flex;
+    height: 75px;
+    align-items: center;
+}
+.price-ship{
+    display: flex;
+    height: 75px;
+    border: 1px solid black;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    align-items: center;
+}
+.price-total{
+    display: flex;
+    height: 150px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    padding-top: 16px;
+    
+}
+.price-buy .text{
+    width: 160px;
+}
+.button-payment{
+    width: 100%;
+    height: 50px;
+    background-color: red;
+    font-size: 22px;
+    text-align: center;
+}
+.button-payment button{
+    border: none;
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+.button-payment button:hover{
+    background-color: #bb0000;
+}
