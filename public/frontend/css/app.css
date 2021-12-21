@@ -99,7 +99,7 @@ a:hover{
     margin-top: 20px;
 }
 .center{
-    margin-top: 20px;
+    margin-top: 10px;
     height: auto;
 }
 .top-center{
@@ -219,7 +219,7 @@ padding: 10px;
 .book-1{
     text-align: center;
     margin-top: 20px;
-    margin-left: 10px;
+    margin-left: 5px;
     border: 2px solid white;
     
 }
@@ -232,10 +232,10 @@ padding: 10px;
     text-align: left;
     font-size: 15px;
     padding-left: 5px;
-    height: 40px;
+    height: auto;
 }
 .price-book{
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: left;
     padding-left: 5px;
 }
@@ -243,11 +243,7 @@ padding: 10px;
     color:tomato;
     font-size: 18px;
     font-weight: bolder;
-}
-.old-price{
-    color: gray;
-    font-size: 15px;
-    text-decoration: line-through;
+    
 }
 .bottom-category{
     margin-top: 30px;

@@ -22,17 +22,35 @@ class ProductController extends Controller
      */
     
     public function homepage(){
-        $newproduct = DB::table('product')
+        $newproduct = DB::table('products')
             ->orderBy('publicDate', 'desc')
             ->get();
-        return view('frontend.homepage', compact('newproduct'));
+        $bestseller = DB::table('products')
+            ->get();
+        return view('frontend.homepage', compact('newproduct', 'bestseller'));
     }
     public function detail($id){
-        $productdetail = DB::table('product')
+        $productdetail = DB::table('products')
             ->where('productId', $id)
             ->get();
         return view('frontend.information', compact('productdetail'));
     }
+    public function category($name){
+        $category = category::all();
+        $product = DB::table('products')
+            ->where('category', $name)
+            ->get();        
+        return view('frontend.category', compact('category', 'product'));
+    }
+    public function search(Request $request){
+        $keyword = $request->input('keyword');
+        $productSearch = DB::table('products')
+            ->where('productName', 'like', '%' . $keyword . '%')
+            ->get();
+
+        return view('frontend.search', compact('keyword', 'productSearch'));
+    }
+
     
 
     /**
@@ -62,7 +80,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // được cập nhật bởi thắng em
-        $file = $request->file('file')->store('products');
+        $file = $request->file('file')->store('public');
+        $file = substr($file,7);
         $book_name = $request->input('productName');
         $author = $request->input('author');
         $translator = $request->input('translator');

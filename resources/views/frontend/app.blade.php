@@ -15,11 +15,7 @@
     <link rel="stylesheet" href="{{asset('/frontend/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('/frontend/css/category.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
-<style>
-    
-</style>
-</head>
-<body>
+
     <!--Header-->
     @include('frontend.header')
 
@@ -33,5 +29,5 @@
     @include('frontend.footer')
 
     
-</body>
+
 </html>

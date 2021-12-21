@@ -18,15 +18,11 @@
 
             </div>
             <div class="db-box2">
-<<<<<<< HEAD
-                <h5>Monthly Order</h5>
-                <h4>1,232</h4>
-                <p>Increased by 20%</p>
-=======
+
                 <h5>Số đơn tháng này</h5>
                 <h4>1,232</h4> 
                 <p>Tăng 123 đơn</p>
->>>>>>> 0677fbfc35732537e8f0fd4c8794cfdb4cfc90da
+
                 <img src="https://www.bootstrapdash.com/demo/purple-admin-free/assets/images/dashboard/circle.svg" alt="">  
             </div>
             <div class="db-box3">
