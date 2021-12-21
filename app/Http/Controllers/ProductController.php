@@ -36,13 +36,24 @@ class ProductController extends Controller
     
 
     /**
-     * display item product in admin product manager page
+     * display item product in admin list product page
      */
     public function admin_show(){
         $products = Product::all();
         $categories = Category::all();
-        return view('backend.productmanager', compact('products', 'categories'));
+        return view('backend.product_list', compact('products', 'categories'));
     }
+
+    /**
+     * display for product - add page
+     */
+    public function get_addproduct(){
+        $categories = Category::all();
+        return view('backend.product_add', compact('categories'));
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      *
