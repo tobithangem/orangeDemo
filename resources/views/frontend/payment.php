@@ -13,7 +13,8 @@ crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <link rel="stylesheet" href="{{asset('/frontend/css/payment.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('/frontend/css/payment.css')}}"> -->
+    <link href="../../../public/frontend/css/payment.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
 <style>
     
@@ -24,7 +25,7 @@ crossorigin="anonymous">
         <div class="row">
             <div class="col-sm-2">
                 <div class="logo">
-                    <img src="../img/logo.png" alt="" style = " width:250px">
+                    <img src="../../../public/frontend/img/logo.png" alt="" style = " width:250px">
                 </div>
             </div>
             <div class="col-sm-7">
@@ -100,32 +101,32 @@ crossorigin="anonymous">
                     <div class="radio">
                         <div>
                             <input type="radio" checked="checked" />
-                            <img src="../img/Icon-payment.png" alt="" style = " width:30px; height: 30px">
+                            <img src="../../../public/frontend/img/Icon-payment.png" alt="" style = " width:30px; height: 30px">
                             <label>Thanh toán khi nhận hàng</label>
                         </div>
                         <div>
                             <input type="radio" />
-                            <img src="../img/Icon-MoMo.png" alt="" style = " width:30px; height: 30px">
+                            <img src="../../../public/frontend/img/Icon-MoMo.png" alt="" style = " width:30px; height: 30px">
                             <label>Ví MoMo</label>
                         </div>
                         <div>
                             <input type="radio" />
-                            <img src="../img/Icon-ZaloPay.png" alt="" style = " width:30px; height: 30px">
+                            <img src="../../../public/frontend/img/Icon-ZaloPay.png" alt="" style = " width:30px; height: 30px">
                             <label>Ví ZaloPay</label>
                         </div>
                         <div>
                             <input type="radio" />
-                            <img src="../img/Icon-ShoppePay.png" alt="" style = " width:30px; height: 30px">
+                            <img src="../../../public/frontend/img/Icon-ShoppePay.png" alt="" style = " width:30px; height: 30px">
                             <label>Ví ShopeePay</label>
                         </div>
                         <div>
                             <input type="radio" />
-                            <img src="../img/icon-atm.png" alt="" style = " width:30px; height: 30px">
+                            <img src="../../../public/frontend/img/icon-atm.png" alt="" style = " width:30px; height: 30px">
                             <label>ATM/Internet Banking</label>
                         </div>
                         <div>
                             <input type="radio" />
-                            <img src="../img/icon-visa-mastercard.jpg" alt="" style = " width:30px; height: 30px">
+                            <img src="../../../public/frontend/img/icon-visa-mastercard.jpg" alt="" style = " width:30px; height: 30px">
                             <label>VISA / Master Card</label>
                         </div>
                     </div>
@@ -168,7 +169,7 @@ crossorigin="anonymous">
                 <div class="col-4" style = "background-color:white">
                     <div class = "left-footer">
                         <div class = "logo-footer"> 
-                            <img src="../img/logo.png" alt="" style = " width:100%">
+                            <img src="../../../public/frontend/img/logo.png" alt="" style = " width:100%">
                         </div>
                         <div class = "content-left-footer">
                             <div>Tầng 5 toà nhà 1194 Láng - Thành phố Hà Nội</div>

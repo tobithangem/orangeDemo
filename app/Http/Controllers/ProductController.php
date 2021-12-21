@@ -22,13 +22,13 @@ class ProductController extends Controller
      */
     
     public function homepage(){
-        $newproduct = DB::table('product')
+        $newproduct = DB::table('products')
             ->orderBy('publicDate', 'desc')
             ->get();
         return view('frontend.homepage', compact('newproduct'));
     }
     public function detail($id){
-        $productdetail = DB::table('product')
+        $productdetail = DB::table('products')
             ->where('productId', $id)
             ->get();
         return view('frontend.information', compact('productdetail'));
