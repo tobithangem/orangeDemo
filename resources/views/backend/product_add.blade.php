@@ -4,12 +4,12 @@
 
 @section('content')
 <div id="content">
-    <div class="product-manager">
+    <div class="product-manager-add">
         <h3>
             <i class="fas fa-fighter-jet"></i>
             Thêm sản phẩm mới
         </h3>
-        <form action="{{route('admin.store_product')}}" method="POST" enctype="multipart/form-data">
+        <form autocomplete="off" action="{{route('admin.store_product')}}" method="POST" enctype="multipart/form-data">
             @csrf
         <div class="form-add">
             <div class="form-add-img">
@@ -55,6 +55,11 @@
                           </select>
                     </td>
                 </tr>
+                <tr>
+                    <td class="add-table-td">Mã sách <br>
+                        <input class="add-table-input" type="text" name="productCode" id="" required>
+                    </td>
+                </tr>
             </table>
         </div>
         <div class="box2-form-add">
@@ -71,7 +76,13 @@
                 </div>
             </div>
         </div>
-        <p style="text-align: center; font-size: 20px; font-weight: bold;color: orange;">Thêm sản phẩm thành công</p>
+
+        @if(session()->has('message_add'))
+            <div class="add_message">
+                {{ session()->get('message_add') }}
+            </div>
+        @endif
+        
         </form>
     </div>
 </div>
