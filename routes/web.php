@@ -46,6 +46,9 @@ Route::prefix('admin')->group(function () {
         return view('backend.dashboard');
     })->name('admin.dashboard');
 
-    Route::get('/product', [ProductController::class, 'admin_show'])->name('admin.product');
-    Route::post('/product', [ProductController::class, 'store'])->name('admin.store_product');
+    Route::get('/product-list', [ProductController::class, 'admin_show'])->name('admin.listproduct');
+    Route::post('/product-list', [ProductController::class, 'store'])->name('admin.store_product');
+
+    Route::get('/product-add', [ProductController::class, 'get_addproduct'])->name('admin.addproduct');
+    Route::post('/product-add', [ProductController::class, 'store'])->name('admin.store_product');
 });

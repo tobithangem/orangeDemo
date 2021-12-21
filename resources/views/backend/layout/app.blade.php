@@ -174,11 +174,18 @@
             color: orange;
         }
 
+        .collap-link {
+            color: white;
+        }
+        .collap-link:hover {
+            color: orange;
+        }
         #content {
             position: relative;
             top: 60px;
             left: 200px;
             width: calc(100% - 200px);
+            color:black !important;
         }
     </style>
 </head>
