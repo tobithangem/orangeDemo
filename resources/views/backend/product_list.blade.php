@@ -116,7 +116,7 @@
                                                 <tr>
                                                     <td>Thể loại
                                                         <select name="category" id="category">
-                                                            <option value="">{{$item->category}}</option>
+                                                            <option value="{{$item->category}}">{{$item->category}}</option>
                                                                 @foreach ($categories as $category)
                                                                 <option value="{{$category->category}}">{{$category->category}}</option>
                                                                 @endforeach
@@ -222,7 +222,7 @@
                                                 <tr>
                                                     <td>Thể loại
                                                         <select name="category" id="category">
-                                                            <option value="">{{$item_search->category}}</option>
+                                                            <option value="{{$item_search->category}}">{{$item_search->category}}</option>
                                                                 @foreach ($categories as $category)
                                                                 <option value="{{$category->category}}">{{$category->category}}</option>
                                                                 @endforeach
