@@ -1,6 +1,6 @@
 @extends('backend.layout.app')
 
-@section('title', 'Thống kê')
+@section('title', 'Thêm sách')
 
 @section('content')
 <div id="content">
@@ -8,13 +8,19 @@
         <h3>
             <i class="fas fa-fighter-jet"></i>
             Thêm sản phẩm mới
+            @if(session()->has('message_add'))
+                <div class="add_message">
+                    <i class="fas fa-exclamation-circle green"></i>
+                    {{ session()->get('message_add') }}
+                </div>
+            @endif
         </h3>
         <form autocomplete="off" action="{{route('admin.store_product')}}" method="POST" enctype="multipart/form-data">
             @csrf
         <div class="form-add">
             <div class="form-add-img">
                 <img id="form-add-img" src="#" alt="Book Image">
-                <input type="file" name="file" onchange="readURL(this);" required>
+                <input type="file" name="file" onchange="readURL(this);" >
             </div>
             <table class="form-add-table">
                 <tr>
@@ -76,12 +82,12 @@
                 </div>
             </div>
         </div>
+        <ul class="alert text-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
 
-        @if(session()->has('message_add'))
-            <div class="add_message">
-                {{ session()->get('message_add') }}
-            </div>
-        @endif
+        </ul>
         
         </form>
     </div>
