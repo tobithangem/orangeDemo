@@ -2,17 +2,22 @@
     <div class= "container">
         <div class="row">
             <div class="col-sm-2">
+                <a href="{{url('/homepage')}}">
                 <div class="logo">
                     <img src="{{asset('/frontend/img/logo.png')}}" alt="" style = " width:250px">
                 </div>
+                </a>
             </div>
             <div class="col-sm-7">
-                <div  class= "form-search" >
-                    <input type="text" class = "search-input" placeholder = "Tìm kiếm sản phẩm">
+                
+                    <form class="form-search" method="post" action="{{route('search')}}">
+                    {{csrf_field()}}
+                    <input type="text" class = "search-input" name="keyword" placeholder = "Tìm kiếm sản phẩm">
                     <div class = "icon-search">
                         <button class = "button-search"><i class="bi bi-search"></i></button>
                     </div>
-                </div>
+                    </form>
+                
             </div>
             <div class="col-sm-3">
                 <div class="form-cus">

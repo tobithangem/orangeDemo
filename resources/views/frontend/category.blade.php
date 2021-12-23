@@ -1,54 +1,24 @@
-@extends('frontend.app')
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+    <link rel="stylesheet" href="{{asset('/frontend/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('/frontend/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('/frontend/css/category.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+@include('frontend.header')
 <body>
-    @section('content')
-    <div class= "container">
-        <div class="row">
-            <div class="col-sm-2">
-                <div class="logo">
-                    <img src="{{asset('/frontend/img/logo.png')}}" alt="" style = " width:250px">
-                </div>
-            </div>
-            <div class="col-sm-7">
-                <div  class= "form-search" >
-                    <input type="text" class = "search-input" placeholder = "Tìm kiếm sản phẩm">
-                    <div class = "icon-search">
-                        <button class = "button-search"><i class="bi bi-search"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-cus">
-                    <div class="noti">
-                        <div class = "noti-top">
-                            <div class="noti-icon">
-                            <i class="bi bi-bell"></i>
-                            </div>
-                            <div>Thông báo</div>
-                        </div>
-                    </div>
-                    <div class="cart">
-                        <a href="/cart">
-                        <div class="cart-top">
-                            <i class="bi bi-cart3"></i>
-                        </div>
-                        <div> Giỏ hàng</div>
-                        </a>
-                    </div>
-                    <div class="account">
-                        <a href="/account.php">
-                            <div class="account-top">
-                                <div class="account-icon">
-                                    <i class="bi bi-person"></i>
-                                </div>
-                                <div>Tài khoản</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,27 +39,27 @@
                             <div id="menu">
                                 <ul>
                                     <li>
-                                        <a href="">Văn Học</a>
+                                        <a href="{{asset('/category/Văn Học')}}">Văn Học</a>
                                         
                                     </li>
                                     <li>
-                                        <a href="">Tâm lý - Kỹ năng sống</a>
+                                        <a href="{{asset('/category/Tâm lý - Kỹ năng sống')}}">Tâm lý - Kỹ năng sống</a>
                                         
                                     </li>
                                     <li>
-                                        <a href="">Sách thiếu nhi</a>
+                                        <a href="{{asset('/category/Sách thiếu nhi')}}">Sách thiếu nhi</a>
                                         
                                     </li>
                                     <li>
-                                        <a href="">Giáo khoa - Tham khảo</a>
+                                        <a href="{{asset('/category/Giáo khoa - Tham khảo')}}">Giáo khoa - Tham khảo</a>
                                         
                                     </li>
                                     <li>
-                                        <a href="">Tiểu sử - Hồi kí</a>
+                                        <a href="{{asset('/category/Tiểu sử - Hồi kí')}}">Tiểu sử - Hồi kí</a>
                                         
                                     </li>
                                     <li>
-                                        <a href="">Sách học ngoại ngữ</a>
+                                        <a href="{{asset('/category/Sách học ngoại ngữ')}}">Sách học ngoại ngữ</a>
                                         
                                     </li>
                                     <li>
@@ -144,7 +114,7 @@
                                 <label for="vehicle3"> Sky Book</label><br>
                                 </div>
                             </div>
-                            <div class="price">
+                            <!-- <div class="price">
                                 <label class="label-filter" for="">GIÁ</label><br>
                                 <div class="checkbox">
                                 <input type="checkbox" id="price1" name="price1" value="50">
@@ -158,7 +128,7 @@
                                 <input type="checkbox" id="price3" name="price5" value="400">
                                 <label for="vehicle3"> Trên 400.000đ</label><br>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="publisher"></div>
                             <div class="age">
 
@@ -225,106 +195,30 @@
                                 
                             </div>
                         <div class="list-product row">
-                        
-                        <div class="col-4">
+                        @foreach ($product as $item)
+                        <div class="col-3">
                             <div class="book-1">
-                                <a href="{{asset('/detail/1')}}" >
+                                <a href="{{url('/detail',[$item->productId])}}" >
                                 <div class="img-book">
                                     <img src="{{asset('/frontend/img/book1.png')}}" alt="" style ="width:200px">
                                 </div>
                                 <div class="name-book">
-                                    <a>Một phút với Steve Jobs Một phút với Steve Jobs</a>
+                                    <a>{{$item->productName}}</a>
                                     
                                 </div>
                                 </a>
                                 <div class="price-book">
                                     <div class="new-price">
-                                        100.000đ
+                                    {{$item->price}} vnđ
                                     </div>
-                                    <div class="old-price">
-                                        150.000đ
-                                    </div>
+                                    
                                 </div>
                                 <div class="rate-book"></div>
-                                <div class="amount-sold"></div>
+                                <div class="amount-sold"> Đã bán 10</div>
 
                             </div>
                         </div>
-                        <div class="col-4">
-                        <div class="book-1">
-                                <div class="img-book">
-                                    <img src="{{asset('/frontend/img/book2.png')}}" alt="" style ="width:200px">
-                                </div>
-                                <div class="name-book">Từ điển tiếng "Em"</div>
-                                <div class="price-book">
-                                    <div class="new-price">
-                                        100.000đ
-                                    </div>
-                                    <div class="old-price">
-                                        150.000đ
-                                    </div>
-                                </div>
-                                <div class="rate-book"></div>
-                                <div class="amount-sold"></div>
-
-                            </div>
-                        </div>
-                        <div class="col-4">
-                        <div class="book-1">
-                                <div class="img-book">
-                                    <img src="{{asset('/frontend/img/book3.png')}}" alt="" style ="width:200px">
-                                </div>
-                                <div class="name-book">Chiến binh cầu vồng</div>
-                                <div class="price-book">
-                                    <div class="new-price">
-                                        100.000đ
-                                    </div>
-                                    <div class="old-price">
-                                        150.000đ
-                                    </div>
-                                </div>
-                                <div class="rate-book"></div>
-                                <div class="amount-sold"></div>
-
-                            </div>
-                        </div>
-                        <div class="col-4">
-                        <div class="book-1">
-                                <div class="img-book">
-                                    <img src="{{asset('/frontend/img/book4.png')}}" alt="" style ="width:200px">
-                                </div>
-                                <div class="name-book">Nhà giả kim</div>
-                                <div class="price-book">
-                                    <div class="new-price">
-                                        100.000đ
-                                    </div>
-                                    <div class="old-price">
-                                        150.000đ
-                                    </div>
-                                </div>
-                                <div class="rate-book"></div>
-                                <div class="amount-sold"></div>
-
-                            </div>
-                        </div>
-                        <div class="col-4">
-                        <div class="book-1">
-                                <div class="img-book">
-                                    <img src="{{asset('/frontend/img/book5.png')}}" alt="" style ="width:200px">
-                                </div>
-                                <div class="name-book">Cây cam ngọt của tôi</div>
-                                <div class="price-book">
-                                    <div class="new-price">
-                                        100.000đ
-                                    </div>
-                                    <div class="old-price">
-                                        150.000đ
-                                    </div>
-                                </div>
-                                <div class="rate-book"></div>
-                                <div class="amount-sold"></div>
-
-                            </div>
+                        @endforeach
                         </div>
                     </div>
 

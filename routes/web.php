@@ -31,6 +31,10 @@ use Illuminate\Support\Facades\Route;
     Route::get('/information', function () {
         return view('frontend.information');
     });
+    Route::get('/category/{name}', [ProductController::class, 'category'])->name('category');
+    
+    Route::post('/search', [ProductController::class, 'search'])->name('search');
+
 
 
 
