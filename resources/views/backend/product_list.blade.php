@@ -74,7 +74,7 @@
                                     @csrf 
                                     <div class="infor">
                                         <div class="area-img">
-                                            <img id="item-img" src="{{$item->prductImage}}" alt="Book Image">
+                                            <img id="item-img" src="{{url('storage/',[$item->prductImage])}}" alt="Book Image">
                                             <input type="file" name="file" onchange="readURL(this);">
                                         </div>
                                         <div class="area-basicinfor">
@@ -124,7 +124,7 @@
                                                     </td>
                                                     <td>
                                                         Mã sản phẩm
-                                                        <input type="text" name="translator" value="{{$item->productCode}}" class="text-infor" required>
+                                                        <input type="text" name="productCode" value="{{$item->productCode}}" class="text-infor" required>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -180,7 +180,7 @@
                                     @csrf
                                     <div class="infor">
                                         <div class="area-img">
-                                            <img id="item-img" src="{{$item_search->prductImage}}" alt="Book Image">
+                                            <img id="item-img" src="{{url('storage/',[$item->prductImage])}}" alt="Book Image">
                                             <input type="file" name="file" onchange="readURL(this);">
                                         </div>
                                         <div class="area-basicinfor">
@@ -230,7 +230,7 @@
                                                     </td>
                                                     <td>
                                                         Mã sản phẩm
-                                                        <input type="text" name="translator" value="{{$item_search->productCode}}" class="text-infor" required>
+                                                        <input type="text" name="productCode" value="{{$item_search->productCode}}" class="text-infor" required>
                                                     </td>
                                                 </tr>
                                             </table>

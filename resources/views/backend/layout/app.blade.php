@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> @yield('title') </title>
     <link href="{{asset('/backend/css/productmanager.css')}}" rel="stylesheet">
+    <link href="{{asset('/backend/css/ordermanager.css')}}" rel="stylesheet">
     <link href="{{asset('/backend/css/dashboard.css')}}" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Ruda' rel='stylesheet'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

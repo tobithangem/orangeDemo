@@ -29,7 +29,10 @@
                     Mật khẩu <br>
                     <input type="password" name="admin_password" required> <br>
                     <input type="checkbox" checked="checked"> Lưu tài khoản <br>
-                    <button type="submit">Đăng nhập</button>
+                    <button type="submit">Đăng nhập</button> <br> <br>
+                    @if(session()->has('error_login'))
+                    <p style="color: red;">{{ session()->get('error_login') }}</p>
+                    @endif
                 </form>
             </div>
         </div>

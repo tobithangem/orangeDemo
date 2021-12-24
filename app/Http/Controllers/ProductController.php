@@ -78,6 +78,7 @@ class ProductController extends Controller
         // được cập nhật bởi thắng em
 
         $file = $request->file('file')->store('public');
+        $file = substr($file, 7);
         $book_name = $request->input('productName');
         $author = $request->input('author');
         $translator = $request->input('translator');
@@ -154,6 +155,7 @@ class ProductController extends Controller
         //edit product by thang em
         if($request->hasFile('file')) {
             $file = $request->file('file')->store('public');
+            $file = substr($file, 7);
             $book_name = $request->input('productName');
             $author = $request->input('author');
             $translator = $request->input('translator');
@@ -178,8 +180,9 @@ class ProductController extends Controller
                             'publisher' => $publisher,
                             'numberPage' => $number_page,
                             'publicDate' => $public_date,
+                            'productCode' => $product_code ,
                             'description' => $description,
-                            'productCode' => $product_code  ]
+                            ]
                 );
                 $value = 'Bạn vừa thực hiện sửa sách có id cũ:'.$id;
             $request->session()->put('message_edit', $value);
@@ -209,8 +212,9 @@ class ProductController extends Controller
                         'publisher' => $publisher,
                         'numberPage' => $number_page,
                         'publicDate' => $public_date,
+                        'productCode' => $product_code,
                         'description' => $description,
-                        'productCode' => $product_code] 
+                        ] 
             );
             $value = 'Bạn vừa thực hiện sửa sách có id cũ:'.$id;
         $request->session()->put('message_edit', $value);
