@@ -27,10 +27,13 @@ class AdminController extends Controller
         $password = $request->input('admin_password');
         $result = DB::table('admins')->where('adminName',$name)->where('adminPw',$password)->first();
         if ($result) {
-            return Redirect::to('admin/dashboard');
+            $request->session()->put('tk_admin', $name);
+            return Redirect::to('admin/dashboard')->with('tk_admin', $name); 
         }
         else {
-            echo 'sai';
+            $value = 'Sai tài khoản hoặc mật khẩu';
+            $request->session()->put('error_login', $value);
+            return back()->with('error_login', $value); 
         }
     }
 

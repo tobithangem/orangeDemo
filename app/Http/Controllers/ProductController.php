@@ -105,9 +105,10 @@ class ProductController extends Controller
      * display item product in admin list product page
      */
     public function admin_show(){
+        $keyword = "";
         $products = Product::all();
         $categories = Category::all();
-        return view('backend.product_list', compact('products', 'categories'));
+        return view('backend.product_list', compact('products', 'categories', 'keyword'));
     }
 
     /**
@@ -139,8 +140,9 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // được cập nhật bởi thắng em
+
         $file = $request->file('file')->store('public');
-        $file = substr($file,7);
+        $file = substr($file, 7);
         $book_name = $request->input('productName');
         $author = $request->input('author');
         $translator = $request->input('translator');
@@ -171,7 +173,7 @@ class ProductController extends Controller
                 'created_at' => $create_at,
                 'productCode' => $product_code
             ]); 
-            $value = 'Thêm thành công';
+            $value = 'Thêm thành công sách: '.$book_name;
             $request->session()->put('message_add', $value);
             return redirect()->back()->with('message_add', $value);
             
@@ -180,7 +182,7 @@ class ProductController extends Controller
             $value = 'Thêm thất bại, mã sách đã tồn tại';
             $request->session()->put('message_add', $value);
             return redirect()->back()->with('message_add', $value);;
-        };
+        }; 
     }
 
     /**
@@ -202,9 +204,101 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        //s
+
     }
 
+    public function putdata_dialog($id){
+        $product_edit = DB::table('products')
+                        ->where('productId', $id)
+                        ->first();
+        return back()->withInput()->with('product_edit', $product_edit);
+    }
+
+    public function edit_product(Request $request, $id){
+        //edit product by thang em
+        if($request->hasFile('file')) {
+            $file = $request->file('file')->store('public');
+            $file = substr($file, 7);
+            $book_name = $request->input('productName');
+            $author = $request->input('author');
+            $translator = $request->input('translator');
+            $publisher = $request->input('publisher');
+            $number_page = $request->input('numberPage');
+            $quantity = $request->input('quantity');
+            $public_date = $request->input('publicDate');
+            $description = $request->input('description');
+            $product_code = $request->input('productCode');
+            $price = $request->input('price');
+            $categories = $request->input('category');
+            DB::table('products')
+                  ->where('productId', $id)
+                  ->update(
+                            ['productName' => $book_name,
+                            'prductImage' => $file,
+                            'category' => $categories,
+                            'price' => $price,
+                            'quantity' => $quantity,
+                            'author' => $author,
+                            'translator' => $translator,
+                            'publisher' => $publisher,
+                            'numberPage' => $number_page,
+                            'publicDate' => $public_date,
+                            'productCode' => $product_code ,
+                            'description' => $description,
+                            ]
+                );
+                $value = 'Bạn vừa thực hiện sửa sách có id cũ:'.$id;
+            $request->session()->put('message_edit', $value);
+            return redirect()->back()->with('message_edit', $value);
+        }
+        else {
+        $book_name = $request->input('productName');
+        $author = $request->input('author');
+        $translator = $request->input('translator');
+        $publisher = $request->input('publisher');
+        $number_page = $request->input('numberPage');
+        $quantity = $request->input('quantity');
+        $public_date = $request->input('publicDate');
+        $description = $request->input('description');
+        $product_code = $request->input('productCode');
+        $price = $request->input('price');
+        $categories = $request->input('category');
+        DB::table('products')
+              ->where('productId', $id)
+              ->update(
+                        ['productName' => $book_name,
+                        'category' => $categories,
+                        'price' => $price,
+                        'quantity' => $quantity,
+                        'author' => $author,
+                        'translator' => $translator,
+                        'publisher' => $publisher,
+                        'numberPage' => $number_page,
+                        'publicDate' => $public_date,
+                        'productCode' => $product_code,
+                        'description' => $description,
+                        ] 
+            );
+            $value = 'Bạn vừa thực hiện sửa sách có id cũ:'.$id;
+        $request->session()->put('message_edit', $value);
+        return redirect()->back()->with('message_edit', $value);};
+        /*$product = Product::where('productId', $id)
+                    ->first();
+        $input = $request->all();
+        $product->fill($input)->save();
+        $value = 'Bạn vừa thực hiện sửa sách có id cũ:'.$id;
+        $request->session()->put('message_edit', $value);
+        return redirect()->back()->with('message_edit', $value);   */   
+    }
+
+    public function search_product(Request $request){
+        $keyword = $request->input('keyword');
+        $categories = Category::all();
+        $products = DB::table('products')
+                            ->where('productName', 'like', '%'.$keyword.'%')->get();
+        return view('backend.product_list', compact('products', 'keyword', 'categories'));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -227,4 +321,16 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function delete_product($id){
+        DB::table('products')->where('productId', '=', $id)->delete();
+        $product = DB::table('products')
+                    ->select('productName','productId')
+                    ->where('productId', '=', $id)
+                    ->first();
+        $value = 'Sách gần nhất bị xóa có id: '.$id;
+        session()->put('message_delete', $value);
+        return back()->withInput();
+    }
 }
+

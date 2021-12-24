@@ -59,9 +59,25 @@ Route::prefix('admin')->group(function () {
         return view('backend.dashboard');
     })->name('admin.dashboard');
 
-    Route::get('/product-list', [ProductController::class, 'admin_show'])->name('admin.listproduct');
-    Route::post('/product-list', [ProductController::class, 'store'])->name('admin.store_product');
+    Route::get('/product', [ProductController::class, 'admin_show'])->name('admin.listproduct');
+    Route::post('/product', [ProductController::class, 'store'])->name('admin.store_product');
 
-    Route::get('/product-add', [ProductController::class, 'get_addproduct'])->name('admin.addproduct');
-    Route::post('/product-add', [ProductController::class, 'store'])->name('admin.store_product');
+    Route::get('/product/add', [ProductController::class, 'get_addproduct'])->name('admin.addproduct');
+    Route::post('/product/add', [ProductController::class, 'store'])->name('admin.store_product');
+
+    Route::post('/product', [ProductController::class, 'search_product'])->name('admin.product_search');
+    Route::get('/product/delete/{id}', [ProductController::class, 'delete_product'])->name('admin.delete_product');
+    Route::post('/product/edit/{id}', [ProductController::class, 'edit_product'])->name('admin.edit_product');
+
+    Route::get('/order/pending', function () {
+        return view('backend.order_pending');
+    })->name('admin.orderpending');
+    Route::get('/order/shipping', function () {
+        return view('backend.order_shipping');
+    })->name('admin.ordershipping');
+
+    Route::get('/order/detail', function () {
+        return view('backend.order_details');
+    })->name('admin.orderdetails');
+
 });
