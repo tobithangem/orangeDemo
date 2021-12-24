@@ -107,7 +107,11 @@ a:hover{
 }
 .left{
     width: 40%;
-    height: 500px;
+    height: auto;
+}
+.button{
+    width: 400px;
+    display: flex;
 }
 .img{
     width: 100%;
@@ -132,6 +136,7 @@ a:hover{
     display: flex;
     height: 20%;
     background-color: white;
+    padding-bottom: 20px;
 }
 .button-add{
     width: 50%;
@@ -139,6 +144,7 @@ a:hover{
     text-align: center;
 }
 .button-buy{
+    margin-left: 50px;
     width: 50%;
     height: 100%;
     text-align: center;
@@ -168,6 +174,13 @@ a:hover{
     margin-top: 20px;
     border: none;
     background-color: red;
+}
+.quantity{
+    width: 200px;
+    
+}
+.foot{
+    display: flex
 }
 .right{
     font-family: sans-serif;
@@ -226,7 +239,7 @@ a:hover{
 .quantity{
     display: flex;
     font-weight: bold;
-    margin-left: 30px;
+    margin-left: 102px;
     margin-top: 20px;
     font-size: 20px;
 }

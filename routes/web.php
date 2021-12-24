@@ -32,6 +32,9 @@ use Illuminate\Support\Facades\Route;
         return view('frontend.information');
     });
     Route::get('/category/{name}', [ProductController::class, 'category'])->name('category');
+    Route::post('/addtocart/{id}', [ProductController::class, 'addtocart'])->name('addtocart');
+    Route::post('/addtocart', [ProductController::class, 'quantityadd'])->name('quantityadd');
+    Route::get('/showcart', [ProductController::class, 'showcart'])->name('showcart');
     
     Route::post('/search', [ProductController::class, 'search'])->name('search');
 

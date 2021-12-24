@@ -14,7 +14,7 @@ crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- <link rel="stylesheet" href="{{asset('/frontend/css/payment.css')}}"> -->
-    <link href="../../../public/frontend/css/cart.css" rel="stylesheet" />
+    <link href="{{asset('/frontend/css/cart.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
 <style>
     
@@ -94,6 +94,7 @@ crossorigin="anonymous">
                         <div class="total">Thành tiền</div>
                         <div class="delete">Xóa</div>
                     </div>
+                    @foreach ($productcart as $item)
                     <div class="detail-item-cart"  style="display: flex">
                         <div class="checkbox">
                             <input class="checkbox" type="checkbox" />
@@ -102,7 +103,7 @@ crossorigin="anonymous">
                             <div class="img-book">
                                 <img src="../../../public/frontend/img/book2.png" alt="" style = " width: 100px; height: 130px">
                             </div>
-                            <div class="name-book">Từ điển cho em</div>
+                            <div class="name-book">{{$item->productName}}</div>
                         </div>
                         <div class="price">
                             <span>64.000</span>
@@ -127,7 +128,8 @@ crossorigin="anonymous">
                             <div class="btn-text">Xóa</div>
                         </button></div>
                     </div>
-                    <div class="detail-item-cart"  style="display: flex">
+                    @endforeach
+                    <!-- <div class="detail-item-cart"  style="display: flex">
                         <div class="checkbox">
                             <input class="checkbox" type="checkbox" />
                         </div>
@@ -228,7 +230,7 @@ crossorigin="anonymous">
                                 <div class="btn-text">Xóa</div>
                             </button>
                         </div>
-                    </div>
+                    </div> -->
                 </div> 
                 <div class="col-4">
                     <div class="header-buy">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Collection;
 
 class ProductController extends Controller
 {
@@ -26,8 +27,10 @@ class ProductController extends Controller
     public function homepage(){
         $newproduct = DB::table('products')
             ->orderBy('publicDate', 'desc')
+            ->limit(5)
             ->get();
         $bestseller = DB::table('products')
+            ->limit(5)
             ->get();
         return view('frontend.homepage', compact('newproduct', 'bestseller'));
     }
@@ -52,6 +55,49 @@ class ProductController extends Controller
 
         return view('frontend.search', compact('keyword', 'productSearch'));
     }
+    public function quantityadd(Request $request)
+    {
+        $quantity = $request->input('quantity');
+        return redirect()->back()->with($quantity);
+    }
+    public function addtocart($id){
+        quantityadd();
+        $customerId = 1;
+        $cart = DB::table('carts')
+            ->where('customerId', $customerId)
+            ->get();
+        $product = $cart->where('productId',$id)->first();
+        
+        if( isset($product)){
+            $quantitydb = $product->quantity + $quantity;
+            DB::table('carts')
+            ->where('productId', $id)
+            ->update([
+                'quantity' => $quantitydb
+            ]);
+        }
+        else{ 
+        $quantitydb = $quantity;
+           DB::table('carts')
+            ->insert([
+            'productId' => $id,
+            'customerId' => $customerId,
+            'quantity' => $quantitydb
+        ]);
+    }
+        return redirect()->back();
+    
+    }
+    public function showcart(){
+        $customerId = 1;
+        $productcart = DB::table('products')
+            ->join('carts', 'products.productId', '=', 'carts.productId')
+            ->select('products.*')
+            ->get();
+        return view('frontend.cart', compact('productcart'));
+    }
+    
+    
 
     
 
