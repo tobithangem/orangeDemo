@@ -110,7 +110,7 @@ a:hover{
     height: auto;
 }
 .button{
-    width: 400px;
+    width: 500px;
     display: flex;
 }
 .img{
@@ -239,13 +239,15 @@ a:hover{
 .quantity{
     display: flex;
     font-weight: bold;
-    margin-left: 102px;
+    margin-left: 20px;
     margin-top: 20px;
     font-size: 20px;
+    width: 200px;
 }
 .number{
     display: flex;
     margin-left: 10px;
+    width: 50px;
 }
 .number button{
     width: 35px;
@@ -255,11 +257,14 @@ a:hover{
     text-align: center;
 }
 .number input{
-    width: 35px;
+    width: 105px;
     height: 35px;
     text-align: center;
     border:none;
     outline: black;
+}
+.mess{
+    padding-top: 25px;
 }
 
 /* 

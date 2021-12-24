@@ -55,13 +55,8 @@ class ProductController extends Controller
 
         return view('frontend.search', compact('keyword', 'productSearch'));
     }
-    public function quantityadd(Request $request)
-    {
-        $quantity = $request->input('quantity');
-        return redirect()->back()->with($quantity);
-    }
-    public function addtocart($id){
-        quantityadd();
+    public function addtocart(Request $request, $id){
+        $quantityadd = $request->input('quantityadd');
         $customerId = 1;
         $cart = DB::table('carts')
             ->where('customerId', $customerId)
@@ -69,20 +64,20 @@ class ProductController extends Controller
         $product = $cart->where('productId',$id)->first();
         
         if( isset($product)){
-            $quantitydb = $product->quantity + $quantity;
+            $quantitydb = $product->quantityincart + $quantityadd;
             DB::table('carts')
             ->where('productId', $id)
             ->update([
-                'quantity' => $quantitydb
+                'quantityincart' => $quantitydb
             ]);
         }
         else{ 
-        $quantitydb = $quantity;
+        $quantitydb = $quantityadd;
            DB::table('carts')
             ->insert([
             'productId' => $id,
             'customerId' => $customerId,
-            'quantity' => $quantitydb
+            'quantityincart' => $quantitydb
         ]);
     }
         return redirect()->back();
@@ -92,10 +87,67 @@ class ProductController extends Controller
         $customerId = 1;
         $productcart = DB::table('products')
             ->join('carts', 'products.productId', '=', 'carts.productId')
-            ->select('products.*')
+            ->select('*')
             ->get();
-        return view('frontend.cart', compact('productcart'));
+        $total = 0;
+        foreach ($productcart as $item){
+            $total= $total + $item->price*$item->quantityincart;
+        }
+        return view('frontend.cart', compact('productcart','total'));
     }
+    public function deletecart($id){
+        $customerId = 1;
+        $cart = DB::table('carts')
+            ->where('customerId', $customerId)
+            ->where('productId', $id)
+            ->delete();
+        return redirect()->back();
+    }
+    public function payment(){
+        $customerId = 1;
+        $productcart = DB::table('products')
+            ->join('carts', 'products.productId', '=', 'carts.productId')
+            ->select('*')
+            ->get();
+        $total = 0;
+        foreach ($productcart as $item){
+        $total= $total + $item->price*$item->quantityincart;
+        }
+        return view('frontend.payment', compact('total'));
+    }
+    public function confirm(Request $request){
+        $customerId = 1;
+        DB::table('orders')->insert([
+            'customerId' => $customerId,
+            'phonenumber' => $request->input('phonenumber'),
+            'addressDelivery' => '1194 Lang',
+            'status' => 'waiting'
+        ]);
+        $code = DB::table('orders')
+            ->where('customerId', $customerId)
+            ->orderby('orderId', 'desc')
+            ->limit(1)
+            ->get();
+            foreach($code as $item){
+                $code = $item->orderId;
+            }
+        $cart = DB::table('carts')
+            ->join('products', 'carts.productId', '=', 'products.productId')
+            ->where('customerId', $customerId)
+            ->select('*')
+            ->get();
+        foreach ($cart as $cart){
+            DB::table('orderdetail')->insert([
+                'productId' => $cart->productId,
+                'quantityorder' => $cart->quantityincart,
+                'orderId' => $code,
+                'priceunit' =>$cart->price,
+                'image' =>$cart->prductImage
+            ]);
+        }
+    
+    }
+
     
     
 

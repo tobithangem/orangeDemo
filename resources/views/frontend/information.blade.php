@@ -86,7 +86,7 @@ crossorigin="anonymous">
                     </div>
                 </div> -->
                 <div class="big-img">
-                    <img src="{{asset('/frontend/img/book1.png')}}" style="height: 300px; margin-top: 35px">
+                    <img src="{{url('storage/',[$item->prductImage])}}" style="height: 300px; margin-top: 35px">
                 </div>
             </div>
             
@@ -117,42 +117,38 @@ crossorigin="anonymous">
             </div>
             
         </div>
-    @endforeach
-</div>
-    <form method="post">
+    
+    </div>
+    <form method="post" action= "{{url('addtocart',[$item->productId])}}">
     {{csrf_field()}}
     <div class="click">
         <div class="button">
                 <div class="button-add">
-                    <a href="{{route('addtocart', ['id' => $item->productId])}}"
-                    
-                    class="add_to_cart"
-                    >
-                    <button>
-                        <div class="btn-text" style="color: white">Thêm vào giỏ hàng</div>
+                    <button type="submit">
+                        <div class="btn-text" style="color: white">
+                        Thêm vào giỏ hàng
+                    </div>
                     </button>
-                    </a>
-                </div>
-                <div class="button-buy">
-                    
-                        <button type="submit" onlcick="{{route('showcart')}}" >
-                            <div class="btn-text" style="color: white">Mua ngay</div>
-                        </button>
                     
                 </div>
-        </div>
+                
+        
                 <div class="quantity">
                 <div>Số lượng:</div>
                 <div class="number">
                     
                     <div class="form-group">
-                        <input type="number" value="1" id="number" class="quantityadd" name="quantity" />
+                        <input type="number" value="1" id="number" class="quantityadd" name="quantityadd" />
                     </div>
                     
                 </div>
+                
             </div>
             
+        </div>
     </form>
+    <p class="mess">Bạn đã thêm 4 sản phẩm vào giỏ hàng</p>
+    @endforeach
 </div>
     <div class = "footer">
         <div class="container">
