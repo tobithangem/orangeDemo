@@ -1,0 +1,243 @@
+body {
+    /* background: url(../content/pexels-vecislavas-popa-1571460.jpg); */
+    font-family: Comic Sans MS;
+    background-repeat: no-repeat;
+}
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+.registerbox {
+    width: 450px;
+    height: 550px;
+    background: rgb(172, 169, 169);
+    color: black;
+    top: calc(50% - 250px);
+    left: calc(50% - 225px);
+    position: fixed;
+}
+
+    .registerbox span {
+        color: #ff0000;
+    }
+
+    .registerbox .title {
+        padding-top: 50px;
+        text-align: center;
+        font-size: 36px;
+        color: #000;
+    }
+
+    .registerbox .name {
+        display: flex;
+        padding-left: 16px;
+        padding-top: 16px;
+    }
+
+        .registerbox .name .label {
+            width: 140px;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .registerbox .name input {
+            width: 270px;
+            line-height: 20px;
+        }
+
+    .registerbox .infor {
+        display: flex;
+        padding-left: 16px;
+        padding-top: 8px;
+    }
+
+        .registerbox .infor .birthday {
+            display: flex;
+        }
+
+            .registerbox .infor .birthday .label {
+                width: 140px;
+                color: #000;
+                font-size: 18px;
+            }
+
+            .registerbox .infor .birthday input {
+                width: 270px;
+                line-height: 20px;
+            }
+
+
+    .registerbox .username {
+        display: flex;
+        padding-left: 16px;
+        padding-top: 8px;
+    }
+
+        .registerbox .username .label {
+            width: 140px;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .registerbox .username input {
+            width: 270px;
+            line-height: 20px;
+        }
+
+    .registerbox .password {
+        display: flex;
+        padding-left: 16px;
+        padding-top: 8px;
+    }
+
+        .registerbox .password .label {
+            width: 140px;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .registerbox .password input {
+            width: 270px;
+            line-height: 20px;
+        }
+
+    .registerbox .retype {
+        display: flex;
+        padding-left: 16px;
+        padding-top: 8px;
+    }
+
+        .registerbox .retype .label {
+            width: 140px;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .registerbox .retype input {
+            width: 270px;
+            line-height: 20px;
+        }
+
+    .registerbox .phone {
+        display: flex;
+        padding-left: 16px;
+        padding-top: 8px;
+    }
+
+        .registerbox .phone .label {
+            width: 140px;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .registerbox .phone input {
+            width: 270px;
+            line-height: 20px;
+        }
+
+    .registerbox .email {
+        display: flex;
+        padding-left: 16px;
+        padding-top: 8px;
+    }
+
+        .registerbox .email .label {
+            width: 140px;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .registerbox .email input {
+            width: 270px;
+            line-height: 20px;
+        }
+
+    .registerbox .id {
+        display: flex;
+        padding-left: 16px;
+        padding-top: 8px;
+    }
+
+        .registerbox .id .label {
+            width: 140px;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .registerbox .id input {
+            width: 270px;
+            line-height: 20px;
+        }
+
+    .registerbox .address {
+        display: flex;
+        padding-left: 16px;
+        padding-top: 8px;
+    }
+
+        .registerbox .address .label {
+            width: 140px;
+            color: #000;
+            font-size: 18px;
+        }
+
+        .registerbox .address input {
+            width: 270px;
+            line-height: 20px;
+        }
+
+    .registerbox .submit {
+        width: 450px;
+    }
+
+    .registerbox .submit-input {
+        text-align-last: center;
+    }
+
+    .registerbox .submit input {
+        border: none;
+        outline: none;
+        height: 40px;
+        width: 250px;
+        margin-top: 16px;
+        background-color: orange;
+        border-radius: 25px;
+        font-size: 18px;
+        font-family: Comic Sans MS;
+    }
+
+    .registerbox input[type="submit"]:hover {
+        cursor: pointer;
+        background: #ffc107;
+        color: #000;
+    }
+
+    .registerbox input[type="text"], [type="date"], [type="password"]{
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        color: #000;
+        font-size: 16px;
+        height: 25px;
+    }
+
+    .registerbox .linklogin{
+        margin-top: 16px;
+    }
+
+    .registerbox a {
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 20px;
+        margin-left: 75px;
+        font-size: 16px;
+    }
+
+        .registerbox a:hover {
+            color: #ffc107;
+        }

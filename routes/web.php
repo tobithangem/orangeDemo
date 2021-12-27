@@ -3,6 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +24,23 @@ use Illuminate\Support\Facades\Route;
     // Route::get('/homepage', function () {
     //     return view('frontend.homepage');
     // });
+    // Trang Login
+
+    // Route::get('/login', [LoginController::class, 'index']);
+    // Route::post('/frontend/login', [LoginController::class, 'login']);
+
+
+    // Login with Auth
+    Route::get('/login', [LoginController::class, 'index']);
+    Route::post('/frontend/login', [LoginController::class, 'login']);
+
+    // Trang Register
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register'])->name('form_register');
+
     Route::get('/category', function () {
         return view('frontend.category');
     })->name('vanhoc');
-    
     Route::get('/homepage', [ProductController::class, 'homepage'])->name('homepage');
     Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
     Route::get('/information', function () {
