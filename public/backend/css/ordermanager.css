@@ -10,9 +10,8 @@
     margin-left: 40px;
 }
 .table-sub-order{
-    height: 350px;
     overflow: auto;
-    margin-top: 20px;
+    height: 350px;
 }
 .table-tr-order {
     border-bottom: 1px solid;
@@ -23,3 +22,38 @@
 }
 
 
+#left-box{
+    /* background-color: cyan; */
+    border-right: 1px solid;
+    width: 100%;
+    height: auto;
+    padding-left: 40px;
+}
+.table-orderdetail {
+    height: 350px;
+    overflow-y: scroll;
+    width: 100%;
+}
+#left-box > table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+#left-box td {
+    padding: 0; 
+    margin: 0;
+}
+.tbody-orderdetail tr {
+    border-bottom: 1px solid;
+}
+.b-order {
+    position: absolute;
+    top: -20px;
+}
+
+.p-tag{
+    line-height: 2;
+}
+a:hover {
+    cursor: pointer;
+}
