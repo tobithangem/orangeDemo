@@ -33,9 +33,8 @@
                 Quản lí đơn hàng
             </a>
             <ul class="collapse" id="ordercollapse2">
-                <li>Đang đợi</li>
-                <li>Đang giao</li>
-                <li>Đã giao</li>
+                <li><a class="collap-link" href="{{route('admin.orderpending')}}">Chờ xét duyệt</a></li>
+                <li><a class="collap-link" href="{{route('admin.ordershipping')}}">Đã duyệt</a></li>
             </ul>
         </li>
         <li class="sidebar-contact">

@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="cart">
-                        <a href="/cart">
+                        <a href="{{route('showcart')}}">
                         <div class="cart-top">
                             <i class="bi bi-cart3"></i>
                         </div>

@@ -1,6 +1,6 @@
 .product-manager {
     padding-top: 15px;
-    padding-left: 40px;
+    margin-left: 40px;
     padding-right: 40px;
 }
 .product-manager .filter {
@@ -16,6 +16,8 @@
     border: 1px solid black;
     cursor: pointer;
     border-radius: 4px;
+    display: flex;
+    align-items: center;
 }
 input.search-form {
     border: none;
@@ -38,8 +40,8 @@ input.search-form {
     
     background-color: rgb(247, 70, 70);
     padding-left: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 6px;
+    padding-bottom: 7px;
     padding-right: 15px;
     color: white;
 }
@@ -64,16 +66,28 @@ input.search-form {
     color: white;
 }
 .btn-deleteitem:hover {
-    background-color: #ce5d5d;
+    background-color: #ac2c2c;
+    color: white;
 }
 .table-book {
-    margin-top: 30px;
+    margin-top: 40px;
     width: 100%;
     padding-left: 40px;
     color: black;
+    position: relative;
+}
+.text-1 {
+    position:absolute;   
+    top:-20px;
+    z-index:2;
+    height:20px;
+}
+.table-scroll {
+    height: 350px;
+    overflow: auto;
+    margin-top: 20px;
 }
 .table-book tr {
-    border-bottom: 1px solid;
     margin-bottom: 10px;
     padding-bottom: 15px !important;
 }
@@ -83,10 +97,6 @@ input.search-form {
 th, td {
     padding-top: 5px;
     padding-bottom: 5px;
-}
-.table-book input {
-    width: 15px;
-    height: 15px;
 }
 .table-book .pagi {
     display: flex;
@@ -108,17 +118,18 @@ th, td {
 }
 
 .dialog {
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: -222px;
     right: 0;
     bottom: 0;
-    left: 0;
+    left: -240px;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: opacity linear 0.2s;
-    visibility: hidden; 
+    display: none; 
+    height: 100vh;
 }
 .overlay {
     background-color: rgba(0, 0, 0, 0.5);
@@ -136,9 +147,8 @@ th, td {
     background-size: cover;
 }
 #dialog:target {
-    visibility: visible;
+    display: flex;
 }
-
 .dialog-body .infor{
     width: 100%;
     height: 300px;
@@ -226,7 +236,7 @@ th, td {
 }
 
 .btn-canceldialog:hover {
-    background-color: #b14e4e;
+    background-color: #ac2c2c;
     color: white;
 }
 .btn-savedialog {
@@ -334,7 +344,19 @@ padding-left: 15px;
 .add_message {
     font-size: 20px;
     font-weight: bold;
-    color: orange;
+    color: rgb(76, 247, 70);
     text-align: center;
     margin-top: 15px;
+}
+
+.delete_message {
+    color: rgb(233, 85, 17);
+}
+
+
+.table-thead{
+    border-bottom: 1px solid;
+}
+.table-tbody{
+    border-bottom: 1px solid;
 }

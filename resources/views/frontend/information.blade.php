@@ -69,12 +69,12 @@ crossorigin="anonymous">
         </div>
     </div> -->
     @include('frontend.header')
-    
+<div>  
     <div class = "center">
     @foreach ($productdetail as $item)
         <div class="left">
             <div class="img">
-                <div class="small-img">
+                <!-- <div class="small-img">
                     <div class="img1">
                         <img src="../../../public/frontend/img/image_217141.jpg" class="d-block w-100">
                     </div>
@@ -84,23 +84,12 @@ crossorigin="anonymous">
                     <div class="img1">
                         <img src="../../../public/frontend/img/image_217141.jpg" class="d-block w-100">
                     </div>
-                </div>
+                </div> -->
                 <div class="big-img">
-                    <img src="../../../public/frontend/img/image_217141.jpg" style="height: 300px; margin-top: 35px">
+                    <img src="{{url('storage/',[$item->prductImage])}}" style="height: 300px; margin-top: 35px">
                 </div>
             </div>
-            <div class="click">
-                <div class="button-add">
-                    <button>
-                        <div class="btn-text" style="color: white">Thêm vào giỏ hàng</div>
-                    </button>
-                </div>
-                <div class="button-buy">
-                    <button>
-                        <div class="btn-text" style="color: white">Mua ngay</div>
-                    </button>
-                </div>
-            </div>
+            
         </div>
         
         <div class="right">
@@ -108,10 +97,10 @@ crossorigin="anonymous">
             <div class="infor">
                 <div class="publishing-company">
                     Nhà xuất bản:
-                    <div class="NXB">Nhà xuất bản giáo dục</div>
+                    <div class="NXB">{{$item->publisher}}</div>
                 </div>
                 <div class="author">Tác giả: 
-                    <div class="TG">Lại Văn Long</div>
+                    <div class="TG">{{$item->author}}</div>
                 </div>
             </div>
             <div class="cover-form">
@@ -119,28 +108,71 @@ crossorigin="anonymous">
                     <div class="HTB">Bìa mềm</div>
             </div>
             <div class="introduce">
-                Liệt thần là phần tiếp theo nối Tuyết đen, một nhân vật mới xuất hiện -Tuyết Hoa Phi Vũ - đã làm khuynh đảo giang hồ. Với dáng vẻ thư sinh yếu ớt, dung mạo như tuyệt đẹp nhưng ẩn giấu trong mình là võ công phi phàm. Sau khi tiếp cận Đông Tử, Tuyết Hoa Phi Vũ đã đem lòng yêu và muốn chinh phục nàng. Mặc dù Đông Tử vẫn luôn thương nhớ Vạn Độc Vương. Tuyết Hoa Phi Vũ đã lợi dụng tình cảm trong sáng của Đông Tử để khiến Vạn Độc Vương xuất hiện, đồng thời một chưởng đoạt hạt Phong vũ châu của Vạn Độc Vương. Liệu không có Phong vũ châu Vạn Độc
+            {{$item->description}}
+                <!-- Liệt thần là phần tiếp theo nối Tuyết đen, một nhân vật mới xuất hiện -Tuyết Hoa Phi Vũ - đã làm khuynh đảo giang hồ. Với dáng vẻ thư sinh yếu ớt, dung mạo như tuyệt đẹp nhưng ẩn giấu trong mình là võ công phi phàm. Sau khi tiếp cận Đông Tử, Tuyết Hoa Phi Vũ đã đem lòng yêu và muốn chinh phục nàng. Mặc dù Đông Tử vẫn luôn thương nhớ Vạn Độc Vương. Tuyết Hoa Phi Vũ đã lợi dụng tình cảm trong sáng của Đông Tử để khiến Vạn Độc Vương xuất hiện, đồng thời một chưởng đoạt hạt Phong vũ châu của Vạn Độc Vương. Liệu không có Phong vũ châu Vạn Độc -->
             </div>
             <div class="price">
-                Giá cả:
-                <div class="GC">70.000đ</div>
+                Giá:
+                <div class="GC">{{$item->price}} VNĐ</div>
             </div>
-            <div class="quantity">
+            
+        </div>
+    
+    </div>
+    <form method="post" action= "{{url('addtocart',[$item->productId])}}">
+    {{csrf_field()}}
+    <div class="click">
+        <div class="button">
+                <div class="button-add">
+                    <button type="submit">
+                        <div class="btn-text" style="color: white">
+                        Thêm vào giỏ hàng
+                    </div>
+                    </button>
+                    
+                </div>
+                
+        
+                <div class="quantity">
                 <div>Số lượng:</div>
                 <div class="number">
-                    <button>
-                        <div class="minus">-</div>
-                    </button>
-                    <div><input type="text" value="1" id="number" /></div>
-                    <button>
-                        <div class="plus">+</div>
-                    </button>
+                    
+                    <div class="form-group">
+                        <input type="number" value="1" id="number" class="quantityadd" name="quantityadd" />
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+    </form>
+    <div class="mess">
+    @if(session()->has('message_addtocart'))
+    <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">{{session()->get('message_addtocart')}}</h5>
+                            
+                        </div>
+                        
+                        <div class="modal-footer" style="text-align:center">
+                            
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    @endforeach
+<script>
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'), {})
+    myModal.toggle();
+</script>
+                @endif
     </div>
-    <div class = "footer">
+    @endforeach
+</div>
+    <!-- <div class = "footer">
         <div class="container">
             <div class = "row">
                 <div class="col-4" style = "background-color:white">
@@ -210,7 +242,36 @@ crossorigin="anonymous">
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+    @include ('frontend.footer')
 </body>
     
 </html>
+<script>
+    function add_to_cart(event){
+        event.preventDefault();
+    }
+    $('.form-group').on('input', '.quantityadd', function(){
+    var quantity = $(this).val();
+    
+    if ($.isNumeric(quantity) && (quantity != 0))
+    {
+        $.ajax({
+            type: 'get',
+            url: '/Cart/add/'+Id+'/'+quantity,
+            success: function(data){
+                if (data == 'success') {                
+                    alert('success');
+                }
+                else{
+                    alert('failure');
+                }
+
+            },
+            error:function(data){
+
+            }
+        });
+    }
+});
+</script>
