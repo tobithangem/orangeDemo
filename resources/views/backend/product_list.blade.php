@@ -57,7 +57,7 @@
                             <br>Thể loại: {{$item->category }}
                         </td>
                         <td>{{$item->price}}đ</td>
-                        <td>{{$item->quantity}}</td>
+                        <td style="width: 80px;">{{$item->quantity}}</td>
                         <td>
                             <a class="btn-edititem" onclick="show_dialog({{$item->productId}})">
                                 <i class="fas fa-edit"></i>
@@ -163,7 +163,7 @@
                             <br>Thể loại: {{$item_search->category }}
                         </td>
                         <td>{{$item_search->price}}đ</td>
-                        <td>{{$item_search->quantity}}</td>
+                        <td style="width: 80px;">{{$item_search->quantity}}</td>
                         <td>
                             <a class="btn-edititem" onclick="show_dialog({{$item_search->productId}})"">
                                 <i class="fas fa-edit"></i>
@@ -180,7 +180,7 @@
                                     @csrf
                                     <div class="infor">
                                         <div class="area-img">
-                                            <img id="item-img" src="{{url('storage/',[$item->prductImage])}}" alt="Book Image">
+                                            <img id="item-img" src="{{url('storage/',[$item_search->prductImage])}}" alt="Book Image">
                                             <input type="file" name="file" onchange="readURL(this);">
                                         </div>
                                         <div class="area-basicinfor">

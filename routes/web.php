@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,15 +68,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/product/delete/{id}', [ProductController::class, 'delete_product'])->name('admin.delete_product');
     Route::post('/product/edit/{id}', [ProductController::class, 'edit_product'])->name('admin.edit_product');
 
-    Route::get('/order/pending', function () {
-        return view('backend.order_pending');
-    })->name('admin.orderpending');
-    Route::get('/order/shipping', function () {
-        return view('backend.order_shipping');
-    })->name('admin.ordershipping');
+    Route::get('/order/pending', [OrderController::class, 'get_orders'])->name('admin.orderpending');
+    Route::get('/order/shipping', [OrderController::class, 'get_orders_shipping'])->name('admin.ordershipping');
 
-    Route::get('/order/detail', function () {
-        return view('backend.order_details');
-    })->name('admin.orderdetails');
+    Route::get('/order/detail/{customerId}/{orderId}', 
+    [OrderController::class, 'get_orders_details'])->name('admin.orderdetails');
 
+    Route::get('/order/details/confirm/{orderId}', [OrderController::class, 'confirm_order'])->name('order.confirm');
+
+    Route::get('/order/delete/{orderId}', [OrderController::class, 'delete_order'])->name('order.delete');
+    Route::post('/order/search/pending', [OrderController::class, 'search_orderpending'])->name('orderpending.search');
+    Route::post('/order/search/shipping', [OrderController::class, 'search_ordershipping'])->name('ordershipping.search');
 });
