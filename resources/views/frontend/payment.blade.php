@@ -31,23 +31,23 @@ crossorigin="anonymous">
                 <div class="form">
                     <div class="name" style="display: flex">
                         <div class="text" style="display: flex">Tên người nhận<div style="color: red">(*)</div></div>
-                        <input type="text" id="name" />
+                        <input type="text" name="name" />
                     </div>
                     <div class="email" style="display: flex">
                         <div class="text" style="display: flex">Email<div style="color: red">(*)</div></div>
-                        <input type="text" id="email" />
+                        <input type="text" name="email" />
                     </div>
                     <div class="phone" style="display: flex">
                         <div class="text" style="display: flex">Số điện thoai<div style="color: red">(*)</div></div>
-                        <input type="text" name="phonenumber" />
+                        <input type="text" name="phone" />
                     </div>
                     <div class="address" style="display: flex">
                         <div class="text" style="display: flex">Địa chỉ<div style="color: red">(*)</div></div>
-                        <input type="text" id="address" style="width: 400px" />
+                        <input type="text" name="address" style="width: 400px" />
                     </div>
                     <div class="note" style="display: flex">
                         <div class="text">Ghi chú</div>
-                        <input type="text" id="note" style="width: 400px" />
+                        <input type="text" name="note" style="width: 400px" />
                     </div>
                 </div>
             </div>

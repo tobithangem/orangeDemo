@@ -69,14 +69,14 @@ crossorigin="anonymous">
                                 <button>
                                     <div class="minus">-</div>
                                 </button>
-                                <div><input type="text" value="{{$item->quantityincart}}" id="number"/></div>
+                                <div><input type="text" value="{{$item->quantityInCart}}" id="number"/></div>
                                 <button>
                                     <div class="plus">+</div>
                                 </button>
                             </div>
                         </div>
                         <div class="total">
-                            <span>{{$item->price*$item->quantityincart}}</span>
+                            <span>{{$item->price*$item->quantityInCart}}</span>
                         </div>
                         <div class="delete">
                         <button>

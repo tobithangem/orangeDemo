@@ -147,10 +147,32 @@ crossorigin="anonymous">
             
         </div>
     </form>
-    <p class="mess">Bạn đã thêm 4 sản phẩm vào giỏ hàng</p>
+    <div class="mess">
+    @if(session()->has('message_addtocart'))
+    <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">{{session()->get('message_addtocart')}}</h5>
+                            
+                        </div>
+                        
+                        <div class="modal-footer" style="text-align:center">
+                            
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<script>
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'), {})
+    myModal.toggle();
+</script>
+                @endif
+    </div>
     @endforeach
 </div>
-    <div class = "footer">
+    <!-- <div class = "footer">
         <div class="container">
             <div class = "row">
                 <div class="col-4" style = "background-color:white">
@@ -220,7 +242,8 @@ crossorigin="anonymous">
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+    @include ('frontend.footer')
 </body>
     
 </html>
