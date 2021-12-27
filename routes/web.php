@@ -40,6 +40,7 @@ use Illuminate\Support\Facades\Route;
     Route::get('/payment', [ProductController::class, 'payment'])->name('payment');
     Route::post('/confirm', [ProductController::class, 'confirm'])->name('confirm');
     Route::post('/search', [ProductController::class, 'search'])->name('search');
+   
 
 
 
