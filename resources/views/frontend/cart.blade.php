@@ -14,60 +14,14 @@ crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- <link rel="stylesheet" href="{{asset('/frontend/css/payment.css')}}"> -->
-    <link href="../../../public/frontend/css/cart.css" rel="stylesheet" />
+    <link href="{{asset('/frontend/css/cart.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
 <style>
     
 </style>
 </head>
 <body>
-    <div class= "container">
-        <div class="row">
-            <div class="col-sm-2">
-                <div class="logo">
-                    <img src="../../../public/frontend/img/logo.png" alt="" style = " width:250px">
-                </div>
-            </div>
-            <div class="col-sm-7">
-                <div  class= "form-search" >
-                    <input type="text" class = "search-input" placeholder = "Tìm kiếm sản phẩm">
-                    <div class = "icon-search">
-                        <button class = "button-search"><i class="bi bi-search"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-cus">
-                    <div class="noti">
-                        <div class = "noti-top">
-                            <div class="noti-icon">
-                            <i class="bi bi-bell"></i>
-                            </div>
-                            <div>Thông báo</div>
-                        </div>
-                    </div>
-                    <div class="cart">
-                        <a href="/cart">
-                        <div class="cart-top">
-                            <i class="bi bi-cart3"></i>
-                        </div>
-                        <div> Giỏ hàng</div>
-                        </a>
-                    </div>
-                    <div class="account">
-                        <a href="/account.php">
-                            <div class="account-top">
-                                <div class="account-icon">
-                                    <i class="bi bi-person"></i>
-                                </div>
-                                <div>Tài khoản</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('frontend.header')
     <div class="center">
         <div class="container">
             <div class = "title row" style = "height: 65px">
@@ -94,40 +48,46 @@ crossorigin="anonymous">
                         <div class="total">Thành tiền</div>
                         <div class="delete">Xóa</div>
                     </div>
+                    @foreach ($productcart as $item)
                     <div class="detail-item-cart"  style="display: flex">
                         <div class="checkbox">
                             <input class="checkbox" type="checkbox" />
                         </div>
                         <div class="select-all">
+                            <a class="product-cart" href="{{url('/detail',[$item->productId])}}">
                             <div class="img-book">
-                                <img src="../../../public/frontend/img/book2.png" alt="" style = " width: 100px; height: 130px">
+                                <img src="{{url('storage/',[$item->prductImage])}}" alt="" style = "width: 150px; height: 130px">
                             </div>
-                            <div class="name-book">Từ điển cho em</div>
+                            <div class="name-book">{{$item->productName}}</div>
+                            </a>
                         </div>
                         <div class="price">
-                            <span>64.000</span>
+                            <span>{{$item->price}}</span>
                         </div>
                         <div class="quantity">
                             <div class="number"  style="display: flex">
                                 <button>
                                     <div class="minus">-</div>
                                 </button>
-                                <div><input type="text" value="1" id="number"/></div>
+                                <div><input type="text" value="{{$item->quantityincart}}" id="number"/></div>
                                 <button>
                                     <div class="plus">+</div>
                                 </button>
                             </div>
                         </div>
                         <div class="total">
-                            <span>64.000</span>
+                            <span>{{$item->price*$item->quantityincart}}</span>
                         </div>
                         <div class="delete">
                         <button>
                             <div class="btn-icon"></div>
+                            <a class="deletecart" href="{{url('deletecart',[$item->productId])}}">
                             <div class="btn-text">Xóa</div>
+                            </a>
                         </button></div>
                     </div>
-                    <div class="detail-item-cart"  style="display: flex">
+                    @endforeach
+                    <!-- <div class="detail-item-cart"  style="display: flex">
                         <div class="checkbox">
                             <input class="checkbox" type="checkbox" />
                         </div>
@@ -228,7 +188,7 @@ crossorigin="anonymous">
                                 <div class="btn-text">Xóa</div>
                             </button>
                         </div>
-                    </div>
+                    </div> -->
                 </div> 
                 <div class="col-4">
                     <div class="header-buy">
@@ -237,19 +197,21 @@ crossorigin="anonymous">
                     <div class="price-buy">
                         <div class="price-product">
                             <div class="text">Thành tiền</div>
-                            <span>642.000đ</span>
+                            <span>{{$total}} VNĐ</span>
                         </div>
                         <div class="price-ship">
                             <div class="text">Phí vận chuyển</div>
-                            <span>15.000đ</span>
+                            <span>15.000 VNĐ</span>
                         </div>
                         <div class="price-total">
                             <div class="text" style="font-weight: bold">Tổng số tiền</div>
-                            <span style="font-weight: bold; color: red">659.000đ</span>
+                            <span style="font-weight: bold; color: red">{{$total + 15000}} VNĐ</span>
                         </div>
                         <div class="button-payment">
                             <button>
-                                <div class="btn-payment">THANH TOÁN</div>
+                                <a href="{{route('payment')}}">
+                                    <div class="btn-payment">THANH TOÁN</div>
+                                </a>
                             </button>
                         </div>
                     </div>
@@ -331,3 +293,6 @@ crossorigin="anonymous">
 </body>
     
 </html>
+<script>
+    
+</script>

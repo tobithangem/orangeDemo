@@ -229,6 +229,9 @@ a:hover{
 .price-buy .text{
     width: 160px;
 }
+.product-cart{
+    display: flex;
+}
 .button-payment{
     width: 100%;
     height: 50px;

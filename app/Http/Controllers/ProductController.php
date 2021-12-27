@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Collection;
 
 class ProductController extends Controller
 {
@@ -26,8 +27,12 @@ class ProductController extends Controller
     public function homepage(){
         $newproduct = DB::table('products')
             ->orderBy('publicDate', 'desc')
+            ->limit(5)
             ->get();
-        return view('frontend.homepage', compact('newproduct'));
+        $bestseller = DB::table('products')
+            ->limit(5)
+            ->get();
+        return view('frontend.homepage', compact('newproduct', 'bestseller'));
     }
     public function detail($id){
         $productdetail = DB::table('products')
@@ -35,6 +40,117 @@ class ProductController extends Controller
             ->get();
         return view('frontend.information', compact('productdetail'));
     }
+    public function category($name){
+        $category = category::all();
+        $product = DB::table('products')
+            ->where('category', $name)
+            ->get();        
+        return view('frontend.category', compact('category', 'product'));
+    }
+    public function search(Request $request){
+        $keyword = $request->input('keyword');
+        $productSearch = DB::table('products')
+            ->where('productName', 'like', '%' . $keyword . '%')
+            ->get();
+
+        return view('frontend.search', compact('keyword', 'productSearch'));
+    }
+    public function addtocart(Request $request, $id){
+        $quantityadd = $request->input('quantityadd');
+        $customerId = 1;
+        $cart = DB::table('carts')
+            ->where('customerId', $customerId)
+            ->get();
+        $product = $cart->where('productId',$id)->first();
+        
+        if( isset($product)){
+            $quantitydb = $product->quantityincart + $quantityadd;
+            DB::table('carts')
+            ->where('productId', $id)
+            ->update([
+                'quantityincart' => $quantitydb
+            ]);
+        }
+        else{ 
+        $quantitydb = $quantityadd;
+           DB::table('carts')
+            ->insert([
+            'productId' => $id,
+            'customerId' => $customerId,
+            'quantityincart' => $quantitydb
+        ]);
+    }
+        return redirect()->back();
+    
+    }
+    public function showcart(){
+        $customerId = 1;
+        $productcart = DB::table('products')
+            ->join('carts', 'products.productId', '=', 'carts.productId')
+            ->select('*')
+            ->get();
+        $total = 0;
+        foreach ($productcart as $item){
+            $total= $total + $item->price*$item->quantityincart;
+        }
+        return view('frontend.cart', compact('productcart','total'));
+    }
+    public function deletecart($id){
+        $customerId = 1;
+        $cart = DB::table('carts')
+            ->where('customerId', $customerId)
+            ->where('productId', $id)
+            ->delete();
+        return redirect()->back();
+    }
+    public function payment(){
+        $customerId = 1;
+        $productcart = DB::table('products')
+            ->join('carts', 'products.productId', '=', 'carts.productId')
+            ->select('*')
+            ->get();
+        $total = 0;
+        foreach ($productcart as $item){
+        $total= $total + $item->price*$item->quantityincart;
+        }
+        return view('frontend.payment', compact('total'));
+    }
+    public function confirm(Request $request){
+        $customerId = 1;
+        DB::table('orders')->insert([
+            'customerId' => $customerId,
+            'phonenumber' => $request->input('phonenumber'),
+            'addressDelivery' => '1194 Lang',
+            'status' => 'waiting'
+        ]);
+        $code = DB::table('orders')
+            ->where('customerId', $customerId)
+            ->orderby('orderId', 'desc')
+            ->limit(1)
+            ->get();
+            foreach($code as $item){
+                $code = $item->orderId;
+            }
+        $cart = DB::table('carts')
+            ->join('products', 'carts.productId', '=', 'products.productId')
+            ->where('customerId', $customerId)
+            ->select('*')
+            ->get();
+        foreach ($cart as $cart){
+            DB::table('orderdetail')->insert([
+                'productId' => $cart->productId,
+                'quantityorder' => $cart->quantityincart,
+                'orderId' => $code,
+                'priceunit' =>$cart->price,
+                'image' =>$cart->prductImage
+            ]);
+        }
+    
+    }
+
+    
+    
+
     
 
     /**

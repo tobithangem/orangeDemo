@@ -100,7 +100,7 @@
                     @foreach ($bestseller as $item)
                         <div class="col">
                             <div class="book-1">
-                                <a href="">
+                                <a href="{{url('/detail',[$item->productId])}}">
                                 <div class="img-book">
                                     <img src="{{asset('/frontend/img/book1.png')}}" alt="" style ="width:200px">
                                 </div>
@@ -144,10 +144,12 @@
                     @foreach ($newproduct as $item)
                         <div class="col">
                             <div class="book-1">
+                                <a href="{{url('/detail',[$item->productId])}}">
                                 <div class="img-book">
                                     <img src="{{asset('/frontend/img/book6.png')}}" alt="" style ="width:200px">
                                 </div>
                                 <div class="name-book">{{$item->productName}}</div>
+                                </a>
                                 <div class="price-book">
                                     <div class="new-price">
                                         {{$item->price}} vnđ

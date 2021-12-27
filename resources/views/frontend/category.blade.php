@@ -200,7 +200,7 @@
                             <div class="book-1">
                                 <a href="{{url('/detail',[$item->productId])}}" >
                                 <div class="img-book">
-                                    <img src="{{asset('/frontend/img/book1.png')}}" alt="" style ="width:200px">
+                                    <img src="{{url('storage/',[$item->prductImage])}}" alt="" style ="width:200px">
                                 </div>
                                 <div class="name-book">
                                     <a>{{$item->productName}}</a>
