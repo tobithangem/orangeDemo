@@ -1,5 +1,9 @@
 @extends('frontend.app')
+
 <body>
+
+        
+
     <!-- <div class= "container">
         <div class="row">
             <div class="col-sm-2">
@@ -321,7 +325,27 @@
             </div>
         </div>
     </div> -->
-
+@if(session()->has('message_confirm'))
+                <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Bạn đã đặt hàng thành công</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<script>
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'), {})
+    myModal.toggle();
+</script>
+@endif
 </body>
     
 </html>

@@ -62,13 +62,15 @@ class ProductController extends Controller
             ->where('customerId', $customerId)
             ->get();
         $product = $cart->where('productId',$id)->first();
-        
+        $productName = DB::table('products')
+                ->where('productId', $id)
+                ->value('productName');
         if( isset($product)){
-            $quantitydb = $product->quantityincart + $quantityadd;
+            $quantitydb = $product->quantityInCart + $quantityadd;
             DB::table('carts')
             ->where('productId', $id)
             ->update([
-                'quantityincart' => $quantitydb
+                'quantityInCart' => $quantitydb
             ]);
         }
         else{ 
@@ -77,10 +79,12 @@ class ProductController extends Controller
             ->insert([
             'productId' => $id,
             'customerId' => $customerId,
-            'quantityincart' => $quantitydb
+            'quantityInCart' => $quantitydb
         ]);
     }
-        return redirect()->back();
+        $value = 'Bạn đã thêm '.$quantityadd .' sản phẩm "'.$productName .'" vào giỏ hàng';
+        session()->put('message_addtocart', $value);
+        return redirect()->back()->with('message_addtocart', $value);;
     
     }
     public function showcart(){
@@ -91,7 +95,7 @@ class ProductController extends Controller
             ->get();
         $total = 0;
         foreach ($productcart as $item){
-            $total= $total + $item->price*$item->quantityincart;
+            $total= $total + $item->price*$item->quantityInCart;
         }
         return view('frontend.cart', compact('productcart','total'));
     }
@@ -111,17 +115,31 @@ class ProductController extends Controller
             ->get();
         $total = 0;
         foreach ($productcart as $item){
-        $total= $total + $item->price*$item->quantityincart;
+        $total= $total + $item->price*$item->quantityInCart;
         }
         return view('frontend.payment', compact('total'));
     }
     public function confirm(Request $request){
         $customerId = 1;
+        $cart = DB::table('carts')
+            ->join('products', 'carts.productId', '=', 'products.productId')
+            ->where('customerId', $customerId)
+            ->select('*')
+            ->get();
+        $total = 0;
+            foreach ($cart as $item){
+            $total= $total + $item->price*$item->quantityInCart;
+            }
+        
         DB::table('orders')->insert([
             'customerId' => $customerId,
-            'phonenumber' => $request->input('phonenumber'),
-            'addressDelivery' => '1194 Lang',
-            'status' => 'waiting'
+            'personName' => $request->input('name'),
+            'phone' => $request->input('phone'),
+            'addressDelivery' => $request->input('address'),
+            'status' => 'Chờ xét duyệt',
+            'total' => $total,
+            'payments' => 'Ship COD'
+            
         ]);
         $code = DB::table('orders')
             ->where('customerId', $customerId)
@@ -131,20 +149,22 @@ class ProductController extends Controller
             foreach($code as $item){
                 $code = $item->orderId;
             }
-        $cart = DB::table('carts')
-            ->join('products', 'carts.productId', '=', 'products.productId')
-            ->where('customerId', $customerId)
-            ->select('*')
-            ->get();
+        
         foreach ($cart as $cart){
-            DB::table('orderdetail')->insert([
+
+            DB::table('orderdetails')->insert([
+                'customerId' => $customerId,
                 'productId' => $cart->productId,
-                'quantityorder' => $cart->quantityincart,
+                'quantityOrder' => $cart->quantityInCart,
                 'orderId' => $code,
-                'priceunit' =>$cart->price,
-                'image' =>$cart->prductImage
+                'unitPrice' =>$cart->price,
+                'unitImg' =>$cart->prductImage
             ]);
         }
+        DB::table('carts')->where('customerId', '=', $customerId)->delete();
+        $value = '';
+        session()->put('message_confirm', $value);
+        return redirect()->route('homepage')->with('message_confirm', $value);;
     
     }
 
