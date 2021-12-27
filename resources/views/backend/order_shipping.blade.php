@@ -12,7 +12,10 @@
         <div class="filter">
             <div class="searchform">
                 <i class="fas fa-search"></i>
-                <input class="search-form" type="search" placeholder="Tìm đơn hàng">
+                <form autocomplete="off" action="{{route('ordershipping.search')}}" method="POST">
+                    @csrf
+                    <input class="search-form" name="keyword" value="{{$keyword}}" type="search" placeholder="Tìm sản phẩm">
+                </form>
             </div>
         </div>
     </div>
@@ -189,8 +192,8 @@
                             <input type="checkbox" >
                         </td>
                         <td>{{$order->orderId}}</td>
-                        <td>Id: {{$order->customerId}}
-                            <br> Địa chỉ: {{$order->addressDelivery}}
+                        <td> Id: {{$order->customerId}}
+                            <br> SDT: {{$order->phone}}
                             <br> Ngày đặt: {{$order->orderDate}}
                         </td>
                         <td>{{$order->total}}đ
