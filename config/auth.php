@@ -40,7 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'customers' => [
+            'driver' => 'session',
+            'provider' => 'customers',
+        ],
+
     ],
+
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -60,9 +68,9 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'customers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Customer::class,
         ],
 
         // 'users' => [
@@ -87,7 +95,7 @@ return [
     */
 
     'passwords' => [
-        'users' => [
+        'customers' => [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
