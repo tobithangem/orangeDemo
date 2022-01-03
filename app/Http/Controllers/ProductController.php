@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Omnipay\Omnipay;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Redirect;
+
+
+use Omnipay\MoMo\Message\AllInOne\PurchaseResponse;
 
 class ProductController extends Controller
 {
@@ -253,9 +257,50 @@ class ProductController extends Controller
             
         }
         DB::table('carts')->where('customerId', '=', $customerId)->delete();
-        $value = '';
+
+        if ($request->has('momo')) {
+            $input = $request->all();
+            // $gateway = Omnipay::create('MoMo_AllInOne');
+            // $gateway->initialize([
+            //     'accessKey' => 'A1D62HoOetEKGCOz',
+            //     'partnerCode' => 'MOMONRCE20220103',
+            //     'secretKey' => 'SXGSwf2xHI2BMe0nvqn4Bf6BbkPWIfE3',
+                
+            // ]);
+
+            $response = \MoMoAIO::purchase([
+                'amount' => $input['amount'],
+                'returnUrl' => 'http://127.0.0.1:8000/account',
+                'notifyUrl' => 'http://127.0.0.1:8000/ipn/',
+                'orderId' => $code,
+                'requestId' => $code,
+            ])->send();
+            
+            if ($response->isRedirect()) {
+                $redirectUrl = $response->getRedirectUrl();
+                return redirect($redirectUrl);
+                // TODO: chuyển khách sang trang MoMo để thanh toán
+            }
+            
+
+
+
+
+
+
+        }
+        else {
+            $value = '';
         session()->put('message_confirm', $value);
         return redirect()->route('homepage')->with('message_confirm', $value);;
+        }
+
+
+
+
+
+
+        
     
     }
 

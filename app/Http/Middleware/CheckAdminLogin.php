@@ -16,10 +16,12 @@ class CheckAdminLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session()->has('tk_admin')) {
-            return $next($request);
+        if(session()->has('tk_admin')){
+            
         }
-        else return view('backend.login');
+        else return redirect()->intended('/admin');
+        
+        return $next($request);
         
     }
 }

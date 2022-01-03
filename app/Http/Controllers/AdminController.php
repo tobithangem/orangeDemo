@@ -29,7 +29,7 @@ class AdminController extends Controller
         $result = DB::table('admins')->where('adminName',$name)->where('adminPw',$password)->first();
         if ($result) {
             $request->session()->put('tk_admin', $name);
-            return Redirect::to('admin/dashboard')->with('tk_admin', $name); 
+            return Redirect::to('admin/dashboard'); 
         }
         else {
             $value = 'Sai tài khoản hoặc mật khẩu';

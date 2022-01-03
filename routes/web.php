@@ -70,36 +70,42 @@ use App\Http\Middleware\checkuser;
 /**
  * Backend Route
  */
+Route::get('/admin', function () {
+    return view('backend.login');
+})->name('admin.login');
+
+Route::post('/admin', [AdminController::class, 'sign_in'])->name('admin.login');
 Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('backend.login');
-    })->name('admin.login');
-    
-    Route::post('/', [AdminController::class, 'sign_in'])->name('admin.login');
+
 
     Route::get('/dashboard', function () {
         return view('backend.dashboard');
-    })->name('admin.dashboard');
+    })->name('admin.dashboard')->middleware('checkadminlogin');
 
-    Route::get('/product', [ProductController::class, 'admin_show'])->name('admin.listproduct');
-    Route::post('/product', [ProductController::class, 'store'])->name('admin.store_product');
+    Route::get('/product', [ProductController::class, 'admin_show'])->name('admin.listproduct')->middleware('checkadminlogin');
+    Route::post('/product', [ProductController::class, 'store'])->name('admin.store_product')->middleware('checkadminlogin');
 
-    Route::get('/product/add', [ProductController::class, 'get_addproduct'])->name('admin.addproduct');
-    Route::post('/product/add', [ProductController::class, 'store'])->name('admin.store_product');
+    Route::get('/product/add', [ProductController::class, 'get_addproduct'])->name('admin.addproduct')->middleware('checkadminlogin');
+    Route::post('/product/add', [ProductController::class, 'store'])->name('admin.store_product')->middleware('checkadminlogin');
 
-    Route::post('/product', [ProductController::class, 'search_product'])->name('admin.product_search');
-    Route::get('/product/delete/{id}', [ProductController::class, 'delete_product'])->name('admin.delete_product');
-    Route::post('/product/edit/{id}', [ProductController::class, 'edit_product'])->name('admin.edit_product');
+    Route::post('/product', [ProductController::class, 'search_product'])->name('admin.product_search')->middleware('checkadminlogin');
+    Route::get('/product/delete/{id}', [ProductController::class, 'delete_product'])->name('admin.delete_product')->middleware('checkadminlogin');
+    Route::post('/product/edit/{id}', [ProductController::class, 'edit_product'])->name('admin.edit_product')->middleware('checkadminlogin');
 
-    Route::get('/order/pending', [OrderController::class, 'get_orders'])->name('admin.orderpending');
-    Route::get('/order/shipping', [OrderController::class, 'get_orders_shipping'])->name('admin.ordershipping');
+    Route::get('/order/pending', [OrderController::class, 'get_orders'])->name('admin.orderpending')->middleware('checkadminlogin');
+    Route::get('/order/shipping', [OrderController::class, 'get_orders_shipping'])->name('admin.ordershipping')->middleware('checkadminlogin');
 
     Route::get('/order/detail/{customerId}/{orderId}', 
-    [OrderController::class, 'get_orders_details'])->name('admin.orderdetails');
+    [OrderController::class, 'get_orders_details'])->name('admin.orderdetails')->middleware('checkadminlogin');
 
-    Route::get('/order/details/confirm/{orderId}', [OrderController::class, 'confirm_order'])->name('order.confirm');
+    Route::get('/order/details/confirm/{orderId}', [OrderController::class, 'confirm_order'])->name('order.confirm')->middleware('checkadminlogin');
 
-    Route::get('/order/delete/{orderId}', [OrderController::class, 'delete_order'])->name('order.delete');
+    Route::get('/order/delete/{orderId}', [OrderController::class, 'delete_order'])->name('order.delete')->middleware('checkadminlogin');
     Route::post('/order/search/pending', [OrderController::class, 'search_orderpending'])->name('orderpending.search');
     Route::post('/order/search/shipping', [OrderController::class, 'search_ordershipping'])->name('ordershipping.search');
+});
+
+
+Route::get('/thanh-toan-thanh-cong/', function(){
+    return view('frontend.momopayment');
 });

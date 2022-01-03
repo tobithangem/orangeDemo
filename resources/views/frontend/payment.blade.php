@@ -56,32 +56,32 @@ crossorigin="anonymous">
                     <div class="title">Hình thức thanh toán</div>
                     <div class="radio">
                         <div>
-                            <input type="radio" checked="checked" />
+                            <input type="checkbox" name="shipcod" checked="checked" value="ship-cod"/>
                             <img src="{{asset('/frontend/img/Icon-payment.png')}}" alt="" style = " width:30px; height: 30px">
                             <label>Thanh toán khi nhận hàng</label>
                         </div>
                         <div>
-                            <input type="radio" />
+                            <input type="checkbox" name="momo" value="momo"/>
                             <img src="{{asset('/frontend/img/Icon-MoMo.png')}}" alt="" style = " width:30px; height: 30px">
                             <label>Ví MoMo</label>
                         </div>
                         <div>
-                            <input type="radio" />
+                            <input type="checkbox" />
                             <img src="{{asset('/frontend/img/Icon-ZaloPay.png')}}" alt="" style = " width:30px; height: 30px">
                             <label>Ví ZaloPay</label>
                         </div>
                         <div>
-                            <input type="radio" />
+                            <input type="checkbox" />
                             <img src="{{asset('/frontend/img/Icon-ShoppePay.png')}}" alt="" style = " width:30px; height: 30px">
                             <label>Ví ShopeePay</label>
                         </div>
                         <div>
-                            <input type="radio" />
+                            <input type="checkbox" />
                             <img src="{{asset('/frontend/img/icon-atm.png')}}" alt="" style = " width:30px; height: 30px">
                             <label>ATM/Internet Banking</label>
                         </div>
                         <div>
-                            <input type="radio" />
+                            <input type="checkbox" />
                             <img src="{{asset('/frontend/img/Icon-visa-mastercard.jpg')}}" alt="" style = " width:30px; height: 30px">
                             <label>VISA / Master Card</label>
                         </div>
@@ -101,7 +101,7 @@ crossorigin="anonymous">
                 </div>
                 <div class="total" style="display: flex">
                     <label style="font-weight: bold">Tổng số tiền:</label>
-                    <div style="color: red">{{$total + 15000}} VNĐ</div>
+                    <input style="color: red" value="{{$total + 15000}}" name="amount"> VNĐ
                 </div>
             </div>
         </div>
