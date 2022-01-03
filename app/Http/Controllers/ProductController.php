@@ -6,8 +6,10 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Facades\Session;
+
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -16,22 +18,70 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+    
     /**
      * display item product in homepage
      */
-    
+     
+    public function index()
+    {
+        return view('frontend.login');
+    }
+
+
+    public function login(Request $request)
+    {
+        $this -> validate($request, [
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        $username = $request->input('username');
+        $password = $request->input('password');
+        $customer = DB::table('customers')->Where('username', $username)->Where('password', $password)->first();
+        if($customer) {  
+            $id = $customer->customerId;
+            session()->put('customerId', $id);
+            return Redirect::to('/homepage');
+
+        }
+        else {
+            $value = 'Sai tài khoản hoặc mật khẩu';
+            $request->session()->put('user_error', $value);
+            return back()->with('user_error', $value);
+        };
+    }
+    public function logout(){
+        
+        session()->forget('customerId');
+        return Redirect::to('/login');
+    }
+
+    public function account(){
+        $customerId = session('customerId');
+        $customer = DB::table('customers')
+            ->where('customerId', $customerId)
+            ->get();
+        $orderdetail = DB::table('orderdetails')
+        ->where('customerId', $customerId)
+        ->get();
+        $customerOrder = DB::table('customers')
+            ->join('orders', 'customers.customerId', '=', 'orders.customerId')
+            ->where('customers.customerId', $customerId)
+            ->select('*')
+            ->get();
+        return view('frontend.account' , compact('customer','orderdetail', 'customerOrder'));
+    }
     public function homepage(){
         $newproduct = DB::table('products')
-            ->orderBy('publicDate', 'desc')
+            ->orderBy('created_at', 'desc')
             ->limit(5)
             ->get();
         $bestseller = DB::table('products')
+            ->orderBy('sold', 'desc')
             ->limit(5)
-            ->get();
+            ->get()
+            ;
         return view('frontend.homepage', compact('newproduct', 'bestseller'));
     }
     public function detail($id){
@@ -41,11 +91,15 @@ class ProductController extends Controller
         return view('frontend.information', compact('productdetail'));
     }
     public function category($name){
-        $category = category::all();
+        $category = DB::table('categories')
+            ->where('category', $name)
+            ->value('category');
         $product = DB::table('products')
             ->where('category', $name)
-            ->get();        
-        return view('frontend.category', compact('category', 'product'));
+            ->paginate(8);    
+        
+
+        return view('frontend.category', compact('category', 'product','name'));
     }
     public function search(Request $request){
         $keyword = $request->input('keyword');
@@ -57,7 +111,8 @@ class ProductController extends Controller
     }
     public function addtocart(Request $request, $id){
         $quantityadd = $request->input('quantityadd');
-        $customerId = 1;
+        $customerId = session('customerId');
+        
         $cart = DB::table('carts')
             ->where('customerId', $customerId)
             ->get();
@@ -84,13 +139,14 @@ class ProductController extends Controller
     }
         $value = 'Bạn đã thêm '.$quantityadd .' sản phẩm "'.$productName .'" vào giỏ hàng';
         session()->put('message_addtocart', $value);
-        return redirect()->back()->with('message_addtocart', $value);;
+        return redirect()->back()->with('message_addtocart', $value);
     
     }
     public function showcart(){
-        $customerId = 1;
+        $customerId = session('customerId');
         $productcart = DB::table('products')
             ->join('carts', 'products.productId', '=', 'carts.productId')
+            ->where('carts.customerId', $customerId)
             ->select('*')
             ->get();
         $total = 0;
@@ -100,7 +156,7 @@ class ProductController extends Controller
         return view('frontend.cart', compact('productcart','total'));
     }
     public function deletecart($id){
-        $customerId = 1;
+        $customerId = session('customerId');
         $cart = DB::table('carts')
             ->where('customerId', $customerId)
             ->where('productId', $id)
@@ -108,9 +164,10 @@ class ProductController extends Controller
         return redirect()->back();
     }
     public function payment(){
-        $customerId = 1;
+        $customerId = session('customerId');
         $productcart = DB::table('products')
             ->join('carts', 'products.productId', '=', 'carts.productId')
+            ->where('customerId', $customerId)
             ->select('*')
             ->get();
         $total = 0;
@@ -120,7 +177,7 @@ class ProductController extends Controller
         return view('frontend.payment', compact('total'));
     }
     public function confirm(Request $request){
-        $customerId = 1;
+        $customerId = session('customerId');
         $cart = DB::table('carts')
             ->join('products', 'carts.productId', '=', 'products.productId')
             ->where('customerId', $customerId)
@@ -151,15 +208,24 @@ class ProductController extends Controller
             }
         
         foreach ($cart as $cart){
-
+            
             DB::table('orderdetails')->insert([
                 'customerId' => $customerId,
                 'productId' => $cart->productId,
                 'quantityOrder' => $cart->quantityInCart,
                 'orderId' => $code,
                 'unitPrice' =>$cart->price,
-                'unitImg' =>$cart->prductImage
+                'unitImg' =>$cart->prductImage,
+                'productName' => $cart->productName
             ]);
+            $sold = $cart->quantityInCart;
+            DB::table('products')
+                ->where('productId', $cart->productId)
+                ->update([
+                'sold' => $cart->sold + $sold,
+                'quantity' => $cart->quantity - $sold
+                ]);
+            
         }
         DB::table('carts')->where('customerId', '=', $customerId)->delete();
         $value = '';
@@ -243,7 +309,8 @@ class ProductController extends Controller
                 'publicDate' => $public_date,
                 'description' => $description,
                 'created_at' => $create_at,
-                'productCode' => $product_code
+                'productCode' => $product_code,
+                'sold' => 0
             ]); 
             $value = 'Thêm thành công sách: '.$book_name;
             $request->session()->put('message_add', $value);

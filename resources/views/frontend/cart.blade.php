@@ -36,7 +36,9 @@ crossorigin="anonymous">
             <div class="row" style="height: 10px; background-color: gainsboro">
                 <div class="col"></div>
             </div>
+            
             <div class = "toolbar row">
+            @if($total >0)
                 <div class="col-8">
                     <div class="header-item-cart"  style="display: flex">
                         <div class="checkbox">
@@ -191,18 +193,22 @@ crossorigin="anonymous">
                     </div> -->
                 </div> 
                 <div class="col-4">
+                
                     <div class="header-buy">
                         <div>Thành tiền</div>
                     </div>
+                    
                     <div class="price-buy">
                         <div class="price-product">
                             <div class="text">Thành tiền</div>
                             <span>{{$total}} VNĐ</span>
                         </div>
+                        
                         <div class="price-ship">
                             <div class="text">Phí vận chuyển</div>
                             <span>15.000 VNĐ</span>
                         </div>
+                        
                         <div class="price-total">
                             <div class="text" style="font-weight: bold">Tổng số tiền</div>
                             <span style="font-weight: bold; color: red">{{$total + 15000}} VNĐ</span>
@@ -214,82 +220,23 @@ crossorigin="anonymous">
                                 </a>
                             </button>
                         </div>
+                        @else
+                        <div style="height: 50px ; display:flex; margin-top:100px">
+                        <h3>Bạn chưa có sản phẩm trong giỏ hàng. Hãy tiếp tục mua sắm nào!!   </h3>
+                        
+                        <button style="height: 30px ; margin-left:30px" type="button" class="">
+                            <a href="{{url('/homepage')}}">Về trang chủ</a>
+                        </button>
+                        
+                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
-    <div class = "footer">
-        <div class="container">
-            <div class = "row">
-                <div class="col-4" style = "background-color:white">
-                    <div class = "left-footer">
-                        <div class = "logo-footer"> 
-                            <img src="../../../public/frontend/img/logo.png" alt="" style = " width:100%">
-                        </div>
-                        <div class = "content-left-footer">
-                            <div>Tầng 5 toà nhà 1194 Láng - Thành phố Hà Nội</div>
-                            <div>Công Ty Cổ Phần Phát Hành Sách - ORANGE</div>
-                            <div>Orange nhận đặt hàng trực tuyến và giao tận nơi</div>
-                            <h1> </h1>
-                            <div>Cơ sở 1: 144 Xuân Thuỷ, Cầu Giấy, Hà Nội </div>
-                            <div>Cơ sở 2: 100 Giải Phóng, Hai Bà Trưng, Hà Nội</div>
-                        </div>
-                    
-                    
-                    </div>
-                </div> 
-                <div class="col">
-                    <div class="right-footer">
-                        <div class = "title-right"><h3>DỊCH VỤ</h3></div>
-                        <div class = "content-right">
-                            <div class = "content-line">
-                                <a href="http://">Điều khoản sử dụng</a>
-                            </div>
-                            <div class = "content-line">
-                                <a href="">Chính sách bảo mật</a>
-                            </div>
-                            <div class = "content-line">
-                                <a href="http://">Giới thiệu ORANGE</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                <div class="right-footer">
-                        <div class = "title-right"><h3>HỖ TRỢ</h3></div>
-                        <div class = "content-right">
-                            <div class = "content-line">
-                                <a href="http://">Phương thức vận chuyển</a>
-                            </div>
-                            <div class = "content-line">
-                                <a href="">Phương thức thanh toán</a>
-                            </div>
-                            <div class = "content-line">
-                                <a href="http://">Chính sách đổi trả</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                <div class="right-footer">
-                        <div class = "title-right"><h3>LIÊN HỆ</h3></div>
-                        <div class = "content-right">
-                            <div class = "content-line">
-                                <a href="http://">Email: gmail@orange.com</a>
-                            </div>
-                            <div class = "content-line">
-                                <a href="">Hotline: 19001009</a>
-                            </div>
-                            <div class = "content-line">
-                                <a href="http://">Zalo: 0918273645</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('frontend.footer')
 </body>
     
 </html>

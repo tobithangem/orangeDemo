@@ -147,7 +147,7 @@
                                         <div class="icon-top-center">
                                             <img src="{{asset('/frontend/img/ico_kinhte.png')}}" style = "width:30%" alt="">
                                         </div>
-                                        <div class="title-top-center">Wibu die</div>
+                                        <div class="title-top-center">Mới nhất</div>
                                     </div>
                                 </div>
                                 <div class="col">

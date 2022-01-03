@@ -57,32 +57,32 @@ crossorigin="anonymous">
                     <div class="radio">
                         <div>
                             <input type="radio" checked="checked" />
-                            <img src="../../../public/frontend/img/Icon-payment.png" alt="" style = " width:30px; height: 30px">
+                            <img src="{{asset('/frontend/img/Icon-payment.png')}}" alt="" style = " width:30px; height: 30px">
                             <label>Thanh toán khi nhận hàng</label>
                         </div>
                         <div>
                             <input type="radio" />
-                            <img src="../../../public/frontend/img/Icon-MoMo.png" alt="" style = " width:30px; height: 30px">
+                            <img src="{{asset('/frontend/img/Icon-MoMo.png')}}" alt="" style = " width:30px; height: 30px">
                             <label>Ví MoMo</label>
                         </div>
                         <div>
                             <input type="radio" />
-                            <img src="../../../public/frontend/img/Icon-ZaloPay.png" alt="" style = " width:30px; height: 30px">
+                            <img src="{{asset('/frontend/img/Icon-ZaloPay.png')}}" alt="" style = " width:30px; height: 30px">
                             <label>Ví ZaloPay</label>
                         </div>
                         <div>
                             <input type="radio" />
-                            <img src="../../../public/frontend/img/Icon-ShoppePay.png" alt="" style = " width:30px; height: 30px">
+                            <img src="{{asset('/frontend/img/Icon-ShoppePay.png')}}" alt="" style = " width:30px; height: 30px">
                             <label>Ví ShopeePay</label>
                         </div>
                         <div>
                             <input type="radio" />
-                            <img src="../../../public/frontend/img/icon-atm.png" alt="" style = " width:30px; height: 30px">
+                            <img src="{{asset('/frontend/img/icon-atm.png')}}" alt="" style = " width:30px; height: 30px">
                             <label>ATM/Internet Banking</label>
                         </div>
                         <div>
                             <input type="radio" />
-                            <img src="../../../public/frontend/img/icon-visa-mastercard.jpg" alt="" style = " width:30px; height: 30px">
+                            <img src="{{asset('/frontend/img/Icon-visa-mastercard.jpg')}}" alt="" style = " width:30px; height: 30px">
                             <label>VISA / Master Card</label>
                         </div>
                     </div>

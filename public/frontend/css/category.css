@@ -1,6 +1,7 @@
 .left-content{
     padding: 0;
     border-right: gainsboro solid 5px;
+    height: 880px;
 }
 .right-content{
     padding: 0;
@@ -8,14 +9,14 @@
 }
 .center{
     min-height: 830px !important;
-    height: auto !important;
+    height: 880px !important;
 }
 .category-list-product{
     border-top: gainsboro solid 3px;
 }
 .sortby{
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
 }
 .filter{
     border-top: gainsboro solid 10px;
@@ -47,4 +48,14 @@
 }
 .menu{
     height: 400px;
+}
+.pagination{
+    float: right;
+    float: inline-end;
+    padding-top: 10px;
+}
+.label-category{
+    font-size: 25px;
+    font-weight:200;
+    font-style: italic;
 }

@@ -5,6 +5,9 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Models\Order;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Middleware\checkuser;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,22 +27,37 @@ use Illuminate\Support\Facades\Route;
     // Route::get('/homepage', function () {
     //     return view('frontend.homepage');
     // });
+    // Trang Login
+
+    // Route::get('/login', [LoginController::class, 'index']);
+    // Route::post('/frontend/login', [LoginController::class, 'login']);
+
+
+    // Login with Auth
+    Route::get('/login', [ProductController::class, 'index'])->name('login')->middleware('checklogin');
+    Route::post('/frontend/login', [ProductController::class, 'login']);
+
+    // Trang Register
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register'])->name('form_register');
+
     Route::get('/category', function () {
         return view('frontend.category');
     })->name('vanhoc');
-    
     Route::get('/homepage', [ProductController::class, 'homepage'])->name('homepage');
     Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
     Route::get('/information', function () {
         return view('frontend.information');
     });
     Route::get('/category/{name}', [ProductController::class, 'category'])->name('category');
-    Route::post('/addtocart/{id}', [ProductController::class, 'addtocart'])->name('addtocart');
-    Route::get('/showcart', [ProductController::class, 'showcart'])->name('showcart');
-    Route::get('/deletecart/{id}', [ProductController::class, 'deletecart'])->name('deletecart');
-    Route::get('/payment', [ProductController::class, 'payment'])->name('payment');
-    Route::post('/confirm', [ProductController::class, 'confirm'])->name('confirm');
+    Route::post('/addtocart/{id}', [ProductController::class, 'addtocart'])->name('addtocart')->middleware('checkuser');
+    Route::get('/showcart', [ProductController::class, 'showcart'])->name('showcart')->middleware('checkuser');
+    Route::get('/deletecart/{id}', [ProductController::class, 'deletecart'])->name('deletecart')->middleware('checkuser');
+    Route::get('/payment', [ProductController::class, 'payment'])->name('payment')->middleware('checkuser');
+    Route::post('/confirm', [ProductController::class, 'confirm'])->name('confirm')->middleware('checkuser');
     Route::post('/search', [ProductController::class, 'search'])->name('search');
+    Route::get('/account', [ProductController::class, 'account'])->name('account')->middleware('checkuser');
+    Route::get('/logout', [ProductController::class, 'logout'])->name('logout');
    
 
 

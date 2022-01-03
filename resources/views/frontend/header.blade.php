@@ -38,7 +38,7 @@
                         </a>
                     </div>
                     <div class="account">
-                        <a href="/account.php">
+                        <a href="{{url('/account')}}">
                             <div class="account-top">
                                 <div class="account-icon">
                                     <i class="bi bi-person"></i>

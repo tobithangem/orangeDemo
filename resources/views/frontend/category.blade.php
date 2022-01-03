@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Danh mục sách</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -183,7 +183,7 @@
                         <div>
                         <div class="category-list-product">
                             <div class="sortby">
-                                
+                                <div class="label-category">Thể loại {{$name}}</div>
                                 <div class="sort-by">
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example">
                                     <option value="priceup">Giá từ thấp - cao</option>
@@ -214,11 +214,16 @@
                                     
                                 </div>
                                 <div class="rate-book"></div>
-                                <div class="amount-sold"> Đã bán 10</div>
+                                <div class="amount-sold"> Đã bán {{$item->sold}}</div>
 
                             </div>
                         </div>
                         @endforeach
+                        <div class="d-felx justify-content-center pagi">
+
+                            {{ $product->links() }}
+
+                        </div>
                         </div>
                     </div>
 

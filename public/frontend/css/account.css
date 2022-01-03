@@ -1,0 +1,109 @@
+.title-info {
+    width: 100%;
+    height: 50px;
+    font-size: 22px;
+}
+
+    .title-info p {
+    padding-top: 10px;
+    padding-left: 30px;
+    color: green;
+    font-weight: bold;
+    }
+
+.form-info {
+    width: 100%;
+    height: auto;
+    border-top: 10px solid #dee2e6;
+}
+
+.form-info .name{
+    margin-top: 10px;
+}
+
+.form-info .username{
+    margin-top: 10px;
+}
+
+.form-info .password{
+    margin-top: 10px;
+}
+
+.form-info .email{
+    margin-top: 10px;
+}
+
+.form-info .phoneNumber{
+    margin-top: 10px;
+}
+
+.form-info .dateOfbirth{
+    margin-top: 10px;
+}
+
+.form-info .address{
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+
+.form-info label {
+    padding-left: 30px;
+    width: 200px;
+}
+
+.title-order {
+    width: 100%;
+    height: 60px;
+    font-size: 22px;
+    border-top: 10px solid #dee2e6;
+}
+
+    .title-order p {
+    padding-top: 10px;
+    padding-left: 30px;
+    color: green;
+    font-weight: bold;
+    }
+
+.form-order {
+    width: 100%;
+    height: auto;
+    border-top: 10px solid #dee2e6;
+}
+
+table{
+    border-collapse: collapse;
+    border-color: #ccc;
+    border: none;
+    min-width: 100%;
+    text-align:center;
+}
+
+table thead {
+    border-top: none;
+}
+
+    table thead th {
+        font-weight: normal;
+        height: 50px;
+        color: blue;
+      
+    }
+
+    table tbody th {
+        font-weight: normal;
+        height: 30px;
+        border-top: 1px solid black;
+      
+    }
+
+table th{
+    font-weight: normal;
+    text-align: center;
+    background-color: white !important;
+}
+.logout{
+    margin-left: 70%;
+    margin-top: 10px;
+    height: 70%;
+}

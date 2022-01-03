@@ -110,6 +110,7 @@ a:hover{
 .toolbar{
     display: flex;
     height: auto;
+    min-height: 400px;
 
 }
 .header-item-cart{
