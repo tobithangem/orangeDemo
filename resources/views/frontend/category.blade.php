@@ -185,11 +185,11 @@
                             <div class="sortby">
                                 <div class="label-category">Thể loại {{$name}}</div>
                                 <div class="sort-by">
-                                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-                                    <option value="priceup">Giá từ thấp - cao</option>
-                                    <option value="pricedown">Giá từ cao - thấp</option>
-                                    <option value="sold">Bán chạy nhất</option>
-                                    <option value="new">Sách mới ra</option>
+                                <select id="sortby" name="sortby" class="form-select form-select-sm" onchange="window.location.href=this.options[this.selectedIndex].value;" aria-label=".form-select-sm example">
+                                    <option value="sold">Sắp xếp</option>
+                                    <option value="{{url('pricedown/' .$name)}}">Giá từ cao - thấp</option>
+                                    <option value="{{url('priceup/' .$name)}}">Giá từ thấp - cao</option>
+                                    
                                 </select>
                                 </div>
                                 
@@ -235,5 +235,6 @@
 </div>
     </div>
     @include('frontend.footer')
+
 </body>
 </html>

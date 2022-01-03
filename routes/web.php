@@ -41,9 +41,7 @@ use App\Http\Middleware\checkuser;
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
     Route::post('/register', [RegisterController::class, 'register'])->name('form_register');
 
-    Route::get('/category', function () {
-        return view('frontend.category');
-    })->name('vanhoc');
+    
     Route::get('/homepage', [ProductController::class, 'homepage'])->name('homepage');
     Route::get('/detail/{id}', [ProductController::class, 'detail'])->name('detail');
     Route::get('/information', function () {
@@ -58,6 +56,8 @@ use App\Http\Middleware\checkuser;
     Route::post('/search', [ProductController::class, 'search'])->name('search');
     Route::get('/account', [ProductController::class, 'account'])->name('account')->middleware('checkuser');
     Route::get('/logout', [ProductController::class, 'logout'])->name('logout');
+    Route::get('/pricedown/{name}', [ProductController::class, 'pricedown'])->name('pricedown');
+    Route::get('/priceup/{name}', [ProductController::class, 'priceup'])->name('priceup');
    
 
 

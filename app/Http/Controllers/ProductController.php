@@ -98,6 +98,31 @@ class ProductController extends Controller
             ->where('category', $name)
             ->paginate(8);    
         
+        return view('frontend.category', compact('category', 'product','name'));
+    }
+    public function pricedown($name){
+        
+        $category = DB::table('categories')
+            ->where('category', $name)
+            ->value('category');
+        $product = DB::table('products')
+            ->where('category', $name)
+            ->orderby('price', 'desc')
+            ->paginate(8);    
+        
+
+        return view('frontend.category', compact('category', 'product','name'));
+    }
+    public function priceup($name){
+        
+        $category = DB::table('categories')
+            ->where('category', $name)
+            ->value('category');
+        $product = DB::table('products')
+            ->where('category', $name)
+            ->orderby('price', 'asc')
+            ->paginate(8);    
+        
 
         return view('frontend.category', compact('category', 'product','name'));
     }
